@@ -11,6 +11,6 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index')->name('admin.home');
-    $router->get('/department', 'DepartmentController@grid')->name('admin.department');
-    $router->get('/department/create', 'DepartmentController@form');
+    
+    Route::resource('/department', 'DepartmentController');
 });

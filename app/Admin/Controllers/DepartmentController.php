@@ -9,35 +9,50 @@
 namespace App\Admin\Controllers;
 
 use App\Department;
-use Encore\Admin\Auth\Database\Administrator;
+use Illuminate\Routing\Controller;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
-use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Layout\Content;
+use Encore\Admin\Auth\Database\Administrator;
 
-class DepartmentController extends AdminController
+class DepartmentController extends Controller
 {
-    protected function grid(Content $content)
+    protected function grid()
     {
-        $group = new Department;
-        
-        $grid = new Grid($group);
+        $grid = new Grid(new Department);
 
         $grid->column('department_id', 'ID')->sortable();
         $grid->column('department_name', '组名');
         $grid->column('department_dec', '描述');
 
-        return $content->row($grid);
+        return $grid;
     }
 
-    protected function form(Content $content)
+    protected function form()
     {
         $form = new Form(new Department());
 
-        $form->text('department_name');
-        $form->text('department_dec');
-        $form->time('created_at');
+        $form->text('department_name', '部门名字')->rules('required|min:3');
+        $form->text('department_dec', '部门描述')->rules('required|min:3');
 
-        return $content->row($form);
+        $form->select('leader_id', '部门领导')->options(Administrator::all()->pluck('username','id'));
+        
+        $form->multipleSelect('user_id', '组员')->options(Administrator::all()->pluck('username','id'));
+        return $form;
+    }
+
+    protected function index(Content $content)
+    {
+        return $content->title('部门')->description('列表')->body($this->grid());
+    }
+
+    protected function create(Content $content)
+    {
+        return $content->title('部门')->body($this->form());
+    }
+
+    protected function store()
+    {
+        return $this->form()->store();
     }
 }
