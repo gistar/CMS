@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * Created by Gongye.
  * User: Administrator
  * Date: 2019/10/18
  * Time: 11:40
@@ -9,14 +9,14 @@
 namespace App\Admin\Controllers;
 
 use App\Department;
-use function foo\func;
-use Illuminate\Routing\Controller;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Auth\Database\Administrator;
 use Encore\Admin\Controllers\HasResourceActions;
+use Illuminate\Routing\Controller;
+use Illuminate\Database\Eloquent\Collection;
 
 class DepartmentController extends Controller
 {

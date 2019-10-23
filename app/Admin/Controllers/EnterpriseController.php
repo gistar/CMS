@@ -1,0 +1,165 @@
+<?php
+
+namespace App\Admin\Controllers;
+
+
+use App\EnterpriseModel;
+use App\ProvinceModel;
+use App\CityModel;
+use App\CountryModel;
+use Encore\Admin\Grid;
+use Encore\Admin\Form;
+use Encore\Admin\show;
+use Encore\Admin\Layout\Content;
+use Encore\Admin\Controllers\HasResourceActions;
+use Illuminate\Routing\Controller;
+use Illuminate\Database\Eloquent\Collection;
+
+class EnterpriseController extends Controller
+{
+
+    use HasResourceActions;
+
+    protected $title = '公司';
+
+    protected function title()
+    {
+        return $this->title;
+    }
+
+    protected function grid()
+    {
+        $grid = new Grid(new enterpriseModel());
+
+        $grid->column('id', 'ID')->sortable();
+
+        $grid->column('name', '公司名称');
+
+        $grid->column('representative', '法人/经营者');
+
+        $grid->column('region','省');
+
+        $grid->column('city', '市');
+
+        $grid->column('district', '区/县');
+
+        $grid->column('setup_time', '成立时间');
+
+        $grid->column('registered_capital', '注册资本');
+
+        $grid->column('biz_status', '状态');
+
+        $grid->column('phone', '电话');
+
+        $grid->column('email', 'Email');
+
+        $grid->column('word', '词源');
+
+        return $grid;
+    }
+
+    protected function detail($id)
+    {
+        $show = new Show(enterpriseModel::findOrFail($id));
+
+        $show->field('id', 'Id');
+
+        $show->field('', '');
+
+        $show->field('', '');
+        $show->field('', '');
+        $show->field('', '');
+        $show->field('', '');
+        $show->field('', '');
+        $show->field('', '');
+        $show->field('', '');
+        $show->field('', '');
+        $show->field('', '');
+        $show->field('', '');
+
+        return $show;
+    }
+
+    protected function form()
+    {
+        $form = new Form(new enterpriseModel());
+
+        $form->text('name', '企业名称')->rules('required|min:3');
+
+        $form->text('representative', '企业法人')->rules('required|min:3');
+
+
+        $form->select('region', '省')->options(ProvinceModel::all()->pluck('name','name'))->load('city','/api/city');
+
+        $form->select('city', '市')->options(function($city){
+            if($city){
+                $cityid = CityModel::where('name', $city)->first()->city_id;
+                //dd(CityModel::where('province_id' , CityModel::where('city_id', $cityid)->first()->province_id)->pluck('name', 'name'));
+                return CityModel::where('province_id' , CityModel::where('city_id', $cityid)->first()->province_id)->pluck('name', 'name');
+            }
+        })->load('district', '/api/country');
+
+        $form->select('district', '区县')->options(function($country){
+            if($country){
+                $countryid = CountryModel::where('name', $country)->first()->country_id;
+                return CountryModel::where('city_id', CountryModel::where('country_id', $countryid)->first()->city_id)->pluck('name', 'name');
+            }
+            //return CountryModel::where('country_id', $id)->pluck('name', 'country_id');
+        });
+//        $form->select('city', '市')->options(function($id){
+//            if($id){
+//                return CityModel::where('province_id' , CityModel::where('city_id', $id)->first()->province_id)->pluck('name', 'city_id');
+//            }
+//            return CityModel::where('city_id', $id)->pluck('name', 'city_id');
+//        })->load('district', '/api/country');
+
+//        $form->select('region', '省')->options(ProvinceModel::all()->pluck('name','province_id'))->load('city','/api/city');
+//        $form->select('city', '市')->options(function($id){
+//            if($id){
+//                return CityModel::where('province_id' , CityModel::where('city_id', $id)->first()->province_id)->pluck('name', 'city_id');
+//            }
+//            return CityModel::where('city_id', $id)->pluck('name', 'city_id');
+//        })->load('district', '/api/country');
+//
+//        $form->select('district', '区县')->options(function($id){
+//            if($id){
+//                return CountryModel::where('city_id', CountryModel::where('country_id', $id)->first()->city_id)->pluck('name', 'country_id');
+//            }
+//            return CountryModel::where('country_id', $id)->pluck('name', 'country_id');
+//        });
+
+        $form->select('biz_status', '公司状态')->options(['存续','在业','吊销，未注销','注销','迁出']);
+
+        $form->text('phone', '联系电话');
+
+        $form->text('email', 'Email');
+
+        $form->date('setup_time', '成立日期');
+
+        $form->text('registered_capital', '注册资本');
+
+        $form->text('word', '词源');
+
+        return $form;
+    }
+
+    protected function index(Content $content)
+    {
+        return $content->title($this->title())->description('列表')->body($this->grid());
+    }
+
+    protected function create(Content $content)
+    {
+        return $content->title($this->title())->body($this->form());
+    }
+
+    protected function show($id, Content $content)
+    {
+        return $content->title($this->title())->body($this->detail($id));
+    }
+
+    protected function edit($id, Content $content)
+    {
+        return $content->title($this->title())->body($this->form()->edit($id));
+    }
+}

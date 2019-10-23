@@ -13,4 +13,5 @@ Route::group([
     $router->get('/', 'HomeController@index')->name('admin.home');
     
     Route::resource('/department', 'DepartmentController');
+    Route::resource('/enterprise', 'EnterpriseController');
 });
