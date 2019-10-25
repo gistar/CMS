@@ -3,7 +3,9 @@
 namespace App\Admin\Controllers;
 
 
+use App\Admin\Actions\Enterprise\ImportPost;
 use App\EnterpriseModel;
+use App\Imports\EnterpriseImport;
 use App\ProvinceModel;
 use App\CityModel;
 use App\CountryModel;
@@ -12,8 +14,9 @@ use Encore\Admin\Form;
 use Encore\Admin\show;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Controllers\HasResourceActions;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Database\Eloquent\Collection;
+use Maatwebsite\Excel\Excel;
 
 class EnterpriseController extends Controller
 {
@@ -30,6 +33,10 @@ class EnterpriseController extends Controller
     protected function grid()
     {
         $grid = new Grid(new enterpriseModel());
+
+        $grid->tools(function (Grid\Tools $tools) {
+            $tools->append(new ImportPost());
+        });
 
         $grid->column('id', 'ID')->sortable();
 
@@ -104,7 +111,6 @@ class EnterpriseController extends Controller
                 $countryid = CountryModel::where('name', $country)->first()->country_id;
                 return CountryModel::where('city_id', CountryModel::where('country_id', $countryid)->first()->city_id)->pluck('name', 'name');
             }
-            //return CountryModel::where('country_id', $id)->pluck('name', 'country_id');
         });
 //        $form->select('city', '市')->options(function($id){
 //            if($id){
@@ -128,7 +134,7 @@ class EnterpriseController extends Controller
 //            return CountryModel::where('country_id', $id)->pluck('name', 'country_id');
 //        });
 
-        $form->select('biz_status', '公司状态')->options(['存续','在业','吊销，未注销','注销','迁出']);
+        $form->select('biz_status', '公司状态')->options(['存续' =>'存续','在业' => '在业','吊销，未注销' => '吊销，未注销','注销' => '注销','迁出' => '迁出']);
 
         $form->text('phone', '联系电话');
 

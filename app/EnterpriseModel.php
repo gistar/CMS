@@ -15,4 +15,8 @@ class EnterpriseModel extends Model
     protected $primaryKey = 'id';
 
     public $incrementing = true;
+
+    protected $fillable = [
+        'name', 'representative', 'region','city','district', 'biz_status', 'phone', 'email', 'setup_time', 'registered_capital', 'word'
+    ];
 }
