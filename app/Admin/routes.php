@@ -11,7 +11,14 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index')->name('admin.home');
-    
-    Route::resource('/department', 'DepartmentController');
-    Route::resource('/enterprise', 'EnterpriseController');
+
+    $router->resource('/department', 'DepartmentController');
+    $router->resource('/enterprise', 'EnterpriseController');
+
+    $router->resource('projects', ProjectController::class);
+
+
+    Route::get('/rabbitPush', 'RabbitPushController@send')->name('rabbit.send');
+    Route::get('/rabbitPull', 'RabbitPushController@receive')->name('rabbit.receive');
+    Route::get('/queue', 'RabbitPushController@queue')->name('rabbit.queue');
 });

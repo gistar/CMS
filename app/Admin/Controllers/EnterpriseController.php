@@ -70,19 +70,17 @@ class EnterpriseController extends Controller
         $show = new Show(enterpriseModel::findOrFail($id));
 
         $show->field('id', 'Id');
-
-        $show->field('', '');
-
-        $show->field('', '');
-        $show->field('', '');
-        $show->field('', '');
-        $show->field('', '');
-        $show->field('', '');
-        $show->field('', '');
-        $show->field('', '');
-        $show->field('', '');
-        $show->field('', '');
-        $show->field('', '');
+        $show->field('name', '公司名称');
+        $show->field('representative', '法人代表');
+        $show->field('region', '省');
+        $show->field('city', '市');
+        $show->field('district', '区县');
+        $show->field('phone', '电话');
+        $show->field('email', '邮箱');
+        $show->field('setup_time', '成立时间');
+        $show->field('registered_capital', '注册资本');
+        $show->field('gmt_create', '创建时间');
+        $show->field('gmt_modify', '修改时间');
 
         return $show;
     }

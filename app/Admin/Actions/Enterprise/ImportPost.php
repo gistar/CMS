@@ -5,7 +5,6 @@ namespace App\Admin\Actions\Enterprise;
 use App\EnterpriseModel;
 use App\Imports\EnterpriseImport;
 use Encore\Admin\Actions\Action;
-use function foo\func;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 

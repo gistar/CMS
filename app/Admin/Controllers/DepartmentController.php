@@ -63,7 +63,7 @@ class DepartmentController extends Controller
         $show->field('department_name', '部门名字');
         $show->field('department_dec', '部门描述');
 
-        $show->field('leader','test')->as(function($leader){
+        $show->field('leader','领导')->as(function($leader){
             return $leader->name;
         })->label();
         $show->field('members', '成员')->as(function ($member){

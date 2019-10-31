@@ -41,6 +41,10 @@ return [
             'retry_after' => 90,
         ],
 
+        'rabbitMq' => [
+            //''
+        ],
+
         'beanstalkd' => [
             'driver' => 'beanstalkd',
             'host' => 'localhost',

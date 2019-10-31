@@ -9,6 +9,7 @@
 namespace App;
 
 use Encore\Admin\Auth\Database\Administrator;
+use Encore\Admin\Form\Field\HasMany;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -30,5 +31,10 @@ class Department extends Model
     public function leader() : BelongsTo
     {
         return $this->belongsTo('Encore\Admin\Auth\Database\Administrator',  'leader_id', 'id');
+    }
+
+    public function project() : HasMany
+    {
+        return $this->hasMany('App\Project', 'department_id',  'department_id');
     }
 }
