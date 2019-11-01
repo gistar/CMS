@@ -8,6 +8,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Actions\Department\Project;
 use App\Department;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -38,7 +39,12 @@ class DepartmentController extends Controller
         $grid->column('department_name', '组名');
         $grid->column('department_dec', '描述');
         $grid->column('leader.name', '部门经理')->label();
+        $grid->column('project','项目')->pluck('name')->label();
         $grid->column('members', '成员')->pluck('name')->label();
+
+        $grid->actions(function ($actions) {
+            $actions->add(new Project());
+        });
         return $grid;
     }
 

@@ -16,7 +16,7 @@ Route::group([
     $router->resource('/enterprise', 'EnterpriseController');
 
     $router->resource('projects', ProjectController::class);
-
+    $router->get('departmentProjects/{id}', 'ProjectController@departmentproject');
 
     Route::get('/rabbitPush', 'RabbitPushController@send')->name('rabbit.send');
     Route::get('/rabbitPull', 'RabbitPushController@receive')->name('rabbit.receive');
