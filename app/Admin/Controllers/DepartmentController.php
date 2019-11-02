@@ -36,11 +36,11 @@ class DepartmentController extends Controller
         $grid = new Grid(new Department());
 
         $grid->column('department_id', 'ID')->sortable();
-        $grid->column('department_name', '组名');
-        $grid->column('department_dec', '描述');
-        $grid->column('leader.name', '部门经理')->label();
-        $grid->column('project','项目')->pluck('name')->label();
-        $grid->column('members', '成员')->pluck('name')->label();
+        $grid->column('department_name', trans('admin.department_name'));
+        $grid->column('department_dec', trans('admin.department_description'));
+        $grid->column('leader.name', trans('admin.leader'))->label();
+        $grid->column('project',trans('admin.project'))->pluck('name')->label();
+        $grid->column('members', trans('admin.members'))->pluck('name')->label();
 
         $grid->actions(function ($actions) {
             $actions->add(new Project());
@@ -52,11 +52,11 @@ class DepartmentController extends Controller
     {
         $form = new Form(new Department());
 
-        $form->text('department_name', '部门名字')->rules('required|min:3');
-        $form->text('department_dec', '部门描述')->rules('required|min:3');
+        $form->text('department_name', trans('admin.department_name'))->rules('required|min:3');
+        $form->text('department_dec', trans('admin.department_description'))->rules('required|min:3');
 
-        $form->select('leader_id', '部门领导')->options(Administrator::all()->pluck('username','id'));
-        $form->multipleSelect('members', '组员')->options(Administrator::all()->pluck('username','id'));
+        $form->select('leader_id', trans('admin.leader'))->options(Administrator::all()->pluck('username','id'));
+        $form->multipleSelect('members', trans('admin.members'))->options(Administrator::all()->pluck('username','id'));
 
         return $form;
     }
@@ -66,13 +66,13 @@ class DepartmentController extends Controller
         $show = new Show(Department::findOrFail($id));
 
         $show->field('department_id', 'ID');
-        $show->field('department_name', '部门名字');
-        $show->field('department_dec', '部门描述');
+        $show->field('department_name', trans('admin.department_name'));
+        $show->field('department_dec', trans('admin.department_description'));
 
-        $show->field('leader','领导')->as(function($leader){
+        $show->field('leader',trans('admin.leader'))->as(function($leader){
             return $leader->name;
         })->label();
-        $show->field('members', '成员')->as(function ($member){
+        $show->field('members', trans('admin.members'))->as(function ($member){
             return $member->pluck('name');
         })->label();
 
@@ -84,7 +84,7 @@ class DepartmentController extends Controller
 
     protected function index(Content $content)
     {
-        return $content->title($this->title())->description('列表')->body($this->grid());
+        return $content->title($this->title())->description(trans('admin.list'))->body($this->grid());
     }
 
     protected function create(Content $content)

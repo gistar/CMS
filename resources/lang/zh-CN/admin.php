@@ -103,4 +103,13 @@ return [
     'prev'                   => '上一步',
     'next'                   => '下一步',
     'quick_create'           => '快速创建',
+    'project'               => '项目',
+    'department'            => '部门',
+    'project_name'          => '项目名称',
+    'department_name'       => '部门名称',
+    'department_description'=> '部门描述',
+    'members'               => '组员',
+    'creater'               => '创建人',
+    'note'                  => '备注',
+    'leader'                => '领导',
 ];

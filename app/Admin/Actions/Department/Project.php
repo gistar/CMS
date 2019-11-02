@@ -18,6 +18,6 @@ class Project extends RowAction
 
     public function href()
     {
-        return "/admin/departmentProjects/{$this->getKey()}";
+        return "/admin/department/{$this->getKey()}/projects";
     }
 }
