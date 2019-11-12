@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Project extends Model
 {
-    //
     protected $table = 'admin_project';
 
     protected $primaryKey = 'project_id';
@@ -25,6 +24,11 @@ class Project extends Model
     public function members()
     {
         return $this->belongsToMany('Encore\Admin\Auth\Database\Administrator', 'admin_project_members', 'project_id', 'user_id');
+    }
+
+    public function enterprise()
+    {
+        return $this->hasMany('App\ProjectEnterpriseModel', 'project_id', 'project_id');
     }
 
     public static function boot()

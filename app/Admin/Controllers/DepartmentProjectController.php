@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Actions\Project\Enterprise;
 use App\Project;
 use App\Department;
 
@@ -30,6 +31,13 @@ class DepartmentProjectController extends Controller
     {
         return $this->title;
     }
+
+    private function getTitle($departmentId)
+    {
+        $department = Department::find($departmentId);
+        $this->title = $department->department_name . trans('admin.project');
+    }
+
     /**
      * Make a grid builder.
      *
@@ -43,7 +51,7 @@ class DepartmentProjectController extends Controller
         $grid->column('department.department_name', trans('admin.department_name'));
         $grid->column('note', trans('admin.note'));
 
-        $grid->column('createUser.username',  trans('admin.creater'));
+        $grid->column('createUser.name',  trans('admin.creater'));
 
         $grid->column('members', trans('admin.members'))->pluck('name')->label();
 
@@ -51,8 +59,9 @@ class DepartmentProjectController extends Controller
         $grid->column('updated_at', __('Updated at'));
 
         $grid->model()->where('department_id', '=', $departmentId);
-        //$grid->setResource("/admin/department/{$departmentId}/projects");
-
+        $grid->actions(function ($actions) {
+            $actions->add(new Enterprise());
+        });
         return $grid;
     }
 
@@ -69,9 +78,17 @@ class DepartmentProjectController extends Controller
 
         $show->field('project_id', __('Project id'));
         $show->field('name', trans('admin.project_name'));
-        $show->field('department_id', __('Department id'));
+
+        $show->field('department', trans('admin.department_name'))->as(function ($departmentName){
+            return $departmentName->department_name;
+        });
+
         $show->field('note', trans('admin.Note'));
-        $show->field('create_user_id', __('Create user id'));
+
+        $show->field('createUser', '项目创建人')->as(function ($createUser){
+            return $createUser->name;
+        });
+
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -110,8 +127,7 @@ class DepartmentProjectController extends Controller
 
     protected function index($departmentId, Content $content)
     {
-        $department = Department::find($departmentId);
-        $this->title = $department->department_name . trans('admin.project');
+        $this->getTitle($departmentId);
         return $content->title($this->title())
             ->description(trans('admin.list'))
             ->body($this->grid($departmentId));
@@ -119,16 +135,19 @@ class DepartmentProjectController extends Controller
 
     protected function create($departmentId, Content $content)
     {
+        $this->getTitle($departmentId);
         return $content->title($this->title())->body($this->form($departmentId));
     }
 
     protected function show($departmentId, $projectId, Content $content)
     {
+        $this->getTitle($departmentId);
         return $content->title($this->title())->body($this->detail($departmentId, $projectId));
     }
 
     protected function edit($departmentId, $projectId, Content $content)
     {
+        $this->getTitle($departmentId);
         return $content
             ->title($this->title())
             ->body($this->form($departmentId, $projectId)->edit($projectId));

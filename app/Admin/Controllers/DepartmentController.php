@@ -55,8 +55,8 @@ class DepartmentController extends Controller
         $form->text('department_name', trans('admin.department_name'))->rules('required|min:3');
         $form->text('department_dec', trans('admin.department_description'))->rules('required|min:3');
 
-        $form->select('leader_id', trans('admin.leader'))->options(Administrator::all()->pluck('username','id'));
-        $form->multipleSelect('members', trans('admin.members'))->options(Administrator::all()->pluck('username','id'));
+        $form->select('leader_id', trans('admin.leader'))->options(Administrator::all()->pluck('name','id'));
+        $form->multipleSelect('members', trans('admin.members'))->options(Administrator::all()->pluck('name','id'));
 
         return $form;
     }

@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 
 use App\Admin\Actions\Enterprise\ImportPost;
+use App\Admin\Actions\Post\ExportPost;
 use App\EnterpriseModel;
 use App\Imports\EnterpriseImport;
 use App\ProvinceModel;
@@ -37,7 +38,9 @@ class EnterpriseController extends Controller
         $grid->tools(function (Grid\Tools $tools) {
             $tools->append(new ImportPost());
         });
-
+        $grid->tools(function (Grid\Tools $tools) {
+            $tools->append(new ExportPost());
+        });
         $grid->column('id', 'ID')->sortable();
 
         $grid->column('name', '公司名称');
@@ -61,6 +64,7 @@ class EnterpriseController extends Controller
         $grid->column('email', 'Email');
 
         $grid->column('word', '词源');
+
 
         return $grid;
     }
@@ -92,7 +96,6 @@ class EnterpriseController extends Controller
         $form->text('name', '企业名称')->rules('required|min:3');
 
         $form->text('representative', '企业法人')->rules('required|min:3');
-
 
         $form->select('region', '省')->options(ProvinceModel::all()->pluck('name','name'))->load('city','/api/city');
 
