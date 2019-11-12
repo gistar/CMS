@@ -66,7 +66,7 @@ class ProjectEnterpriseController extends Controller
                 $filter->like('representative','法人代表');
 
                 $projectEnterpriseModel = new ProjectEnterpriseModel();
-                $orders = $projectEnterpriseModel->where('project_id', $projectId)->get();
+                //$orders = $projectEnterpriseModel->where('project_id', $projectId)->get();
                 $ordersBatch = ProjectEnterpriseModel::with('order')->where('project_id',$projectId)->get();
 
                 $orderMembers = array();
@@ -77,12 +77,33 @@ class ProjectEnterpriseController extends Controller
                     }
                 }
                 $filter->equal('order_user_id', '成单人')->select($orderMembers);
+                $filter->like('phone','电话');
+                $lasterBatch = ProjectEnterpriseModel::with('lasterEditer')->where('project_id', $projectId)->get();
+                $lasterMembers = array();
+                foreach ($lasterBatch as $lasterEditor)
+                {
+                    if(isset($lasterEditor->lasterEditer->id)){
+                        $lasterMembers[$lasterEditor->lasterEditer->id] = $lasterEditor->lasterEditer->name;
+                    }
+                }
+                $filter->equal('lasteditor_id', '最后编辑人')->select($lasterMembers);
             });
 
-            $filter->column(1/2,function ($filter){
+            $filter->column(1/2,function ($filter) use ($projectId) {
                 $filter->equal('region','省')->select(ProvinceModel::all()->pluck('name','name'))->load('city', '/api/city');
                 $filter->equal('city','市')->select('/api/city')->load('district', '/api/country');
+                $filter->like('email','Email');
                 //$filter->equal('district','区县')->select('/api/country');
+                $createrBatch = ProjectEnterpriseModel::with('creater')->where('project_id', $projectId)->get();
+                $createrMembers = array();
+                foreach ($createrBatch as $creater)
+                {
+                    if(isset($creater->creater->id)){
+                        $createrMembers[$creater->creater->id] = $creater->creater->name;
+                    }
+                }
+                $filter->equal('create_user_id', '创建人')->select($createrMembers);
+                $filter->between('created_at', '创建时间')->datetime();
             });
         });
         $grid->column('id', trans('Id'));
@@ -96,11 +117,19 @@ class ProjectEnterpriseController extends Controller
         $grid->column('biz_status', trans('admin.bizStatus'));
         $grid->column('credit_code', trans('admin.creditCode'));
         $grid->column('register_code', trans('admin.registerCode'));
-        $grid->column('phone', trans('admin.phone'));
-        $grid->column('email', trans('admin.email'));
+
+        $grid->column('phone', trans('admin.phone'))->display(function ($phone){
+            return mb_substr($phone, 0, 20) . '...';
+        });
+
+        $grid->column('email', trans('admin.email'))->display(function ($email){
+            return mb_substr($email, 0, 20) . '...';
+        });
+
+
         $grid->column('setup_time', trans('admin.setupTime'));
         //$grid->column('industry', trans('admin.industry'));
-        //$grid->column('biz_scope', trans('admin.bizScope'));
+
         //$grid->column('company_type', trans('admin.companyType'));
         //$grid->column('registered_capital', trans('admin.registeredCapital'));
         //$grid->column('actual_capital', trans('admin.actualCapital'));
@@ -115,11 +144,24 @@ class ProjectEnterpriseController extends Controller
         $grid->column('word', trans('admin.word'));
 
         $grid->column('creater.name', trans('admin.creater'));
-        $grid->column('note', trans('admin.note'));
+        $grid->column('note', trans('admin.note'))->display(function($note){
+            if(!empty($note) && mb_strlen($note) > 20){
+                return mb_substr($note, 0, 20) . '...';
+            }
+            return $note;
+        });
         $grid->column('order.name', trans('admin.orderMember'));
         $grid->column('contract_fund', trans('admin.contractFund'));
 
-        $grid->column('project.name', trans('admin.project'));
+        //$grid->column('project.name', trans('admin.project'));
+        $statusArray = ['0' => '未跟踪',
+                    '1' => '跟踪进行时',
+                    '2' => '意向客户',
+                    '3' => '非意向客户',
+                    '4' => '已成交用户'];
+        $grid->column('status', trans('admin.status'))->display(function($status) use ($statusArray){
+            return $statusArray[$status];
+        });
         $grid->column('created_at', trans('admin.Created at'));
         $grid->column('updated_at', trans('admin.Updated at'));
 
@@ -167,7 +209,9 @@ class ProjectEnterpriseController extends Controller
         $show->field('other', trans('admin.other'));*/
         $show->field('word', trans('admin.word'));
 
-        $show->field('creater', trans('admin.creater'));
+        $show->field('creater', trans('admin.creater'))->as(function ($creater){
+            return $creater->name;
+        });
         $show->field('note', trans('admin.note'));
         $show->field('orderMember', trans('admin.orderMember'));
 
@@ -207,7 +251,13 @@ class ProjectEnterpriseController extends Controller
                     return CountryModel::where('city_id', CountryModel::where('country_id', $countryid)->first()->city_id)->pluck('name', 'name');
                 }
             });
-            $form->select('biz_status', trans('admin.bizStatus'))->options(['在业' => '在业', '存续' => '存续','吊销，未注销' => '吊销，未注销','注销' => '注销','迁出' => '迁出','其他' =>'其他']);
+            $form->select('biz_status', trans('admin.bizStatus'))->options([
+                '在业' => '在业',
+                '存续' => '存续',
+                '吊销，未注销' => '吊销，未注销',
+                '注销' => '注销',
+                '迁出' => '迁出',
+                '其他' =>'其他']);
             $form->text('credit_code', trans('admin.creditCode'));
             $form->text('register_code', trans('admin.registerCode'));
         });

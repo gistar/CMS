@@ -14,7 +14,7 @@ use Encore\Admin\Facades\Admin;
 
 use Encore\Admin\Auth\Database\Administrator;
 use Encore\Admin\Controllers\AdminController;
-
+use App\Admin\Actions\Project\Enterprise;
 class ProjectController extends AdminController
 {
     /**
@@ -49,7 +49,9 @@ class ProjectController extends AdminController
             $departmentIds[] = $department->department_id;
         }
         $grid->model()->whereIn('department_id', $departmentIds);
-
+        $grid->actions(function ($actions) {
+            $actions->add(new Enterprise());
+        });
         return $grid;
     }
 

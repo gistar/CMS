@@ -144,4 +144,5 @@ return [
     'enterprise'            =>  '企业',
     'projectEnterprise'     =>  '项目企业',
     'contractFund'          =>  '合同金额',
+    'status'                =>  '状态',
 ];

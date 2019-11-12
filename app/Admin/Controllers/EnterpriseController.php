@@ -17,7 +17,7 @@ use Encore\Admin\Layout\Content;
 use Encore\Admin\Controllers\HasResourceActions;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Maatwebsite\Excel\Excel;
+use App\Admin\Actions\Enterprise\BatchSelectProject;
 
 class EnterpriseController extends Controller
 {
@@ -34,7 +34,9 @@ class EnterpriseController extends Controller
     protected function grid()
     {
         $grid = new Grid(new enterpriseModel());
-
+        $grid->batchActions(function ($batch){
+            $batch->add(new BatchSelectProject());
+        });
         $grid->tools(function (Grid\Tools $tools) {
             $tools->append(new ImportPost());
         });
@@ -64,8 +66,26 @@ class EnterpriseController extends Controller
         $grid->column('email', 'Email');
 
         $grid->column('word', '词源');
+        $grid->expandFilter();
+        $grid->filter(function ($filter){
 
+            $filter->expand();
+            $filter->disableIdFilter();
+            $filter->column(1/2,function ($filter){
+                $filter->like('name','公司名称');
+                $filter->like('representative','法人代表');
+                $filter->like('phone','电话');
+                $filter->between('gmt_create', '创建时间')->datetime();
+            });
 
+            $filter->column(1/2,function ($filter){
+                $filter->equal('region','省')->select(ProvinceModel::all()->pluck('name','name'))->load('city', '/api/city');
+                $filter->equal('city','市')->select('/api/city')->load('district', '/api/country');
+                //$filter->equal('district','区县')->select('/api/country');
+                $filter->like('email','Email');
+                $filter->equal('word','词源');
+            });
+        });
         return $grid;
     }
 
