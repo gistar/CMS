@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Admin\Actions\Project\SelectEnterprise;
+use App\Admin\Actions\Project\SendMessage;
 use App\Http\Controllers\Controller;
 use App\ProjectEnterpriseModel;
 use Encore\Admin\Form;
@@ -51,6 +52,10 @@ class ProjectEnterpriseController extends Controller
         });
         $grid->tools(function (Grid\Tools $tools){
             $tools->append(new ImportEnterprise());
+        });
+
+        $grid->batchActions(function ($batch){
+            $batch->add(new SendMessage());
         });
         /*$grid->tools(function (Grid\Tools $tools){
             $tools->append(new SelectEnterprise());

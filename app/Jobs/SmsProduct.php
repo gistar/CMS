@@ -3,13 +3,12 @@
 namespace App\Jobs;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class SendWelcomeEmail implements ShouldQueue
+class SmsProduct implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -18,9 +17,9 @@ class SendWelcomeEmail implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($message)
+    public function __construct()
     {
-        echo json_encode($message);
+        //
     }
 
     /**
@@ -28,12 +27,8 @@ class SendWelcomeEmail implements ShouldQueue
      *
      * @return void
      */
-    public function handle(Mailer $mailer)
+    public function handle()
     {
-        $mailer->send('email.welcome', ['data' => 'data'], function ($message) {
-            $message->from('gong.gistar@gmail.com', 'Christian Nwmaba');
-            $message->to('284277366@qq.com');
-        });
-        echo json_encode(['284277366@qq.com']);
+        echo 'Send Message';
     }
 }
