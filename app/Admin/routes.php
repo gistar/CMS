@@ -27,4 +27,10 @@ Route::group([
     Route::get('/rabbitPush', 'RabbitPushController@send')->name('rabbit.send');
     Route::get('/rabbitPull', 'RabbitPushController@receive')->name('rabbit.receive');
     Route::get('/queue', 'RabbitPushController@queue')->name('rabbit.queue');
+
+    $router->resource('smstemplates', SmsTemplateController::class);
+    $router->resource('emailtemplates', EmailTemplateController::class);
+
+    $router->resource('smslogs', SmsLogsController::class);
+    $router->resource('emaillogs', EmailLogController::class);
 });

@@ -31,6 +31,11 @@ class Project extends Model
         return $this->hasMany('App\ProjectEnterpriseModel', 'project_id', 'project_id');
     }
 
+    public function smsTemplate()
+    {
+        return $this->hasOne('App\SmsTemplate', 'projectId', 'project_id');
+    }
+
     public static function boot()
     {
         parent::boot();

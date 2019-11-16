@@ -2,6 +2,7 @@
 
 namespace App\Admin\Actions\Enterprise;
 
+use App\ProjectEnterpriseModel;
 use App\ProjectMembers;
 use Encore\Admin\Actions\BatchAction;
 use Encore\Admin\Auth\Database\Administrator;
@@ -21,7 +22,9 @@ class BatchSelectProject extends BatchAction
         $createId = Admin::user()->id;
 
         $importData = array();
+        $checkBoxIds = array();
         foreach ($collection as $model) {
+            $checkBoxIds[] = $model->id;
             $importData[] = array(
                 'name' => $model->name,
                 'representative' => $model->representative,
@@ -39,11 +42,22 @@ class BatchSelectProject extends BatchAction
                 'source_id' => $model->id
             );
         }
-        if(!empty($importData))
-        {
-            DB::table('admin_project_enterprise')->insert($importData);
+        $existArray = ProjectEnterpriseModel::query()->whereIn('source_id', $checkBoxIds)->where('project_id',$project_id)->pluck('name');
+        if(empty($existArray)){
+            if(!empty($importData))
+            {
+                DB::table('admin_project_enterprise')->insert($importData);
+            }
+            return $this->response()->success('成功导入项目')->refresh();
+        }else{
+            foreach ($existArray as $enterprise){
+                $enterprises[] = $enterprise;
+            }
+            $warinfo = implode('<br/>', $enterprises) . '<br/>已经在该项目中';
+
+            return $this->response()->warning($warinfo)->timeout(5000)->refresh();
         }
-        return $this->response()->success('成功导入项目')->refresh();
+
     }
 
     public function form()
