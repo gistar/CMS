@@ -10,14 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::redirect('/', '/admin', 301);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-Auth::routes();
+//Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::group(['prefix' => '/admin', 'namespace' => 'Admin'],function(){
 //    Route::get('/register', 'RegisterController@registershow')->name('register');
