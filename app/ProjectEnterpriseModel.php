@@ -4,9 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Encore\Admin\Facades\Admin;
+use Laravel\Scout\Searchable;
 
 class ProjectEnterpriseModel extends Model
 {
+    use Searchable;
+
     protected  $table = 'admin_project_enterprise';
 
     protected $primaryKey = 'id';
@@ -48,5 +51,33 @@ class ProjectEnterpriseModel extends Model
             }
             $model->lastediter_id = Admin::user()->id;
         });
+    }
+
+    public function mapping()
+    {
+        $mapping = array('company' => array('type' => 'keyword'));
+        return $mapping;
+    }
+
+    public function searchableAs()
+    {
+        return 'PRIMARY';
+    }
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        return $array;
+    }
+
+    public function getScoutKey()
+    {
+        return $this->name;
+    }
+
+    public function getScoutKeyName()
+    {
+        return 'company';
     }
 }

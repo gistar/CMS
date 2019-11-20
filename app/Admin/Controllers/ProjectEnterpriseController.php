@@ -170,7 +170,7 @@ class ProjectEnterpriseController extends Controller
         $grid->column('created_at', trans('admin.Created at'));
         $grid->column('updated_at', trans('admin.Updated at'));
 
-        $grid->model()->where('project_id', '=', $projectId);
+        $grid->model()->where('project_id', '=', $projectId)->searchable();
 
         return $grid;
     }
