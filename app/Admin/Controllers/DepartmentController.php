@@ -10,6 +10,7 @@ namespace App\Admin\Controllers;
 
 use App\Admin\Actions\Department\Project;
 use App\Department;
+use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
@@ -33,14 +34,26 @@ class DepartmentController extends Controller
 
     protected function grid()
     {
-        $grid = new Grid(new Department());
 
+        $grid = new Grid(new Department());
+        //$test = new Department();
         $grid->column('department_id', 'ID')->sortable();
         $grid->column('department_name', trans('admin.department_name'));
         $grid->column('department_dec', trans('admin.department_description'));
         $grid->column('leader.name', trans('admin.leader'))->label();
         $grid->column('project',trans('admin.project'))->pluck('name')->label();
         $grid->column('members', trans('admin.members'))->pluck('name')->label();
+        if(!Admin::user()->isRole('administrator') || Admin::user()->cannot('department.admin.view'))
+        {
+            $users = Administrator::with('department')->where('id',Admin::user()->id)->get();
+            foreach ($users as $user)
+            {
+                foreach($user->department as $department){
+                    $userDepartments[] = $department->department_id;
+                }
+            }
+            $grid->model()->wherein('department_id', $userDepartments);
+        }
 
         $grid->actions(function ($actions) {
             $actions->add(new Project());
