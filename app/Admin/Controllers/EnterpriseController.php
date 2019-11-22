@@ -55,17 +55,17 @@ class EnterpriseController extends Controller
 
         $grid->column('district', '区/县');
 
-        $grid->column('setup_time', '成立时间');
+        //$grid->column('setup_time', '成立时间');
 
-        $grid->column('registered_capital', '注册资本');
+        //$grid->column('registered_capital', '注册资本');
 
-        $grid->column('biz_status', '状态');
+        //$grid->column('biz_status', '状态');
 
         $grid->column('phone', '电话');
 
         $grid->column('email', 'Email');
 
-        $grid->column('word', '词源');
+        //$grid->column('word', '词源');
         $grid->expandFilter();
         $grid->filter(function ($filter){
 
@@ -75,7 +75,8 @@ class EnterpriseController extends Controller
                 $filter->like('name','公司名称');
                 $filter->like('representative','法人代表');
                 $filter->like('phone','电话');
-                $filter->between('gmt_create', '创建时间')->datetime();
+                //$filter->between('gmt_create', '创建时间')->datetime();
+                $filter->between('setup_time', '成立时间')->datetime();
             });
 
             $filter->column(1/2,function ($filter){

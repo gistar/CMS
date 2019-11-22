@@ -169,9 +169,26 @@ class ProjectEnterpriseController extends Controller
         });
         $grid->column('created_at', trans('admin.Created at'));
         $grid->column('updated_at', trans('admin.Updated at'));
+        /*$index = config('scout.elasticsearch.index');
+        if($grid->model()->searchableUsing()->exists($index))
+        {
+            // Delete index if exists
+            $grid->model()->searchableUsing()->deleteIndex($index);
+        }
 
-        //$grid->model()->where('project_id', '=', $projectId)->searchable();
-        $grid->model()->where('project_id', '=', $projectId);
+        // Create new index
+        $grid->model()->searchableUsing()->createIndex($index);
+
+        // Put custom mapping
+        $mappings = $grid->model()->mapping();
+        $grid->model()->searchableUsing()->putMapping($index, $grid->model()->getTable(), $mappings);*/
+        //dump($grid->model());
+        /*$mappings = $grid->model()->getOriginalModel()->mapping();
+        dd($mappings);*/
+        $grid->model()->getOriginalModel()::search('柳州')->get();
+        //$grid->model()->where('project_id', '=', $projectId);
+        dump($grid->model()->getOriginalModel()::search('柳州')->get());
+        dump($grid->model());
         return $grid;
     }
 

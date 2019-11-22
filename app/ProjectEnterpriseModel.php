@@ -53,15 +53,15 @@ class ProjectEnterpriseModel extends Model
         });
     }
 
-    public function mapping()
+    /*public function mapping()
     {
-        $mapping = array('company' => array('type' => 'keyword'));
+        $mapping = array('name' => array('type' => 'keyword'));
         return $mapping;
     }
 
     public function searchableAs()
     {
-        return 'PRIMARY';
+        return 'laravel';
     }
 
     public function toSearchableArray()
@@ -78,6 +78,6 @@ class ProjectEnterpriseModel extends Model
 
     public function getScoutKeyName()
     {
-        return 'company';
-    }
+        return 'name';
+    }*/
 }
