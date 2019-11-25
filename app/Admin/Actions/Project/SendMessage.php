@@ -22,7 +22,7 @@ class SendMessage extends BatchAction
             preg_match('/.*([\d]{11}).*/', $model->phone, $telephone);
 
             if(isset($telephone[1])){
-                dispatch(new \App\Jobs\SendMessage($telephone[1],$request->get('templateId'), $sendId));
+                dispatch(new \App\Jobs\SendMessage($telephone[1],$request->get('templateId'), $sendId))->onQueue('Message');
             }
             continue;
         }
@@ -32,12 +32,13 @@ class SendMessage extends BatchAction
 
     public function form()
     {
-        $projectId = Route::current()->projectId;
+        /*$projectId = Route::current()->projectId;
         if($projectId != null){
             Session::put('projectId', $projectId);
         }
         $project = Project::find(Session::get('projectId'));
-        $templates = $project->smsTemplate()->pluck('title','id');
+        $templates = $project->smsTemplate()->pluck('title','id');*/
+        $templates = SmsTemplate::all()->pluck('title', 'id');
         $this->select('templateId','短信模板')->options($templates);
     }
 }

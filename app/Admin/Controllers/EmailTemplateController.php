@@ -15,7 +15,7 @@ class EmailTemplateController extends AdminController
      *
      * @var string
      */
-    protected $title = 'App\EmailTemplate';
+    protected $title = '邮件模板';
 
     /**
      * Make a grid builder.
@@ -29,7 +29,7 @@ class EmailTemplateController extends AdminController
         $grid->column('id', __('Id'));
         $grid->column('title', __('Title'));
         $grid->column('content', __('Content'));
-        $grid->column('variable', __('Variable'));
+        //$grid->column('variable', __('Variable'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -49,7 +49,7 @@ class EmailTemplateController extends AdminController
         $show->field('id', __('Id'));
         $show->field('title', __('Title'));
         $show->field('content', __('Content'));
-        $show->field('variable', __('Variable'));
+        //$show->field('variable', __('Variable'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -67,7 +67,7 @@ class EmailTemplateController extends AdminController
 
         $form->text('title', __('Title'));
         $form->textarea('content', __('Content'));
-        $form->text('variable', __('Variable'));
+        //$form->text('variable', __('Variable'));
 
         return $form;
     }

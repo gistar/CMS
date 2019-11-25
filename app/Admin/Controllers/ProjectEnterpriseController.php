@@ -70,7 +70,7 @@ class ProjectEnterpriseController extends Controller
                 $filter->like('name','公司名称');
                 $filter->like('representative','法人代表');
 
-                $projectEnterpriseModel = new ProjectEnterpriseModel();
+                //$projectEnterpriseModel = new ProjectEnterpriseModel();
                 //$orders = $projectEnterpriseModel->where('project_id', $projectId)->get();
                 $ordersBatch = ProjectEnterpriseModel::with('order')->where('project_id',$projectId)->get();
 
@@ -114,27 +114,45 @@ class ProjectEnterpriseController extends Controller
         $grid->column('id', trans('Id'));
         $grid->column('name', trans('admin.companyName'));
         $grid->column('representative', trans('admin.representative'));
-        $grid->column('address', trans('admin.address'));
+        //$grid->column('address', trans('admin.address'));
         $grid->column('region', trans('admin.region'));
         $grid->column('city', trans('admin.city'));
         $grid->column('district', trans('admin.district'));
-        //$grid->column('lat_long', trans('admin.lat long'));
         $grid->column('biz_status', trans('admin.bizStatus'));
-        $grid->column('credit_code', trans('admin.creditCode'));
-        $grid->column('register_code', trans('admin.registerCode'));
+        //$grid->column('credit_code', trans('admin.creditCode'));
+        //$grid->column('register_code', trans('admin.registerCode'));
 
         $grid->column('phone', trans('admin.phone'))->display(function ($phone){
-            return mb_substr($phone, 0, 20) . '...';
+            return filled($phone) ? mb_substr($phone, 0, 20) . '...' : '';
         });
 
         $grid->column('email', trans('admin.email'))->display(function ($email){
-            return mb_substr($email, 0, 20) . '...';
+            return filled($email) ? mb_substr($email, 0, 20) . '...' : '';
         });
+        //$grid->column('setup_time', trans('admin.setupTime'));
+        //$grid->column('word', trans('admin.word'));
+        //$grid->column('creater.name', trans('admin.creater'));
+        $grid->column('note', trans('admin.note'))->display(function($note){
+            if(!filled($note) && mb_strlen($note) > 20){
+                return mb_substr($note, 0, 20) . '...';
+            }
+            return filled($note) && $note != '""' ? $note : '';
+        });
+        $grid->column('order.name', trans('admin.orderMember'));
+        $grid->column('contract_fund', trans('admin.contractFund'));
 
 
-        $grid->column('setup_time', trans('admin.setupTime'));
+        $statusArray = ['0' => '未跟踪',
+                    '1' => '跟踪进行时',
+                    '2' => '意向客户',
+                    '3' => '非意向客户',
+                    '4' => '已成交用户'];
+        $grid->column('status', trans('admin.status'))->display(function($status) use ($statusArray){
+            return $statusArray[$status];
+        });
+        //$grid->column('created_at', trans('admin.Created at'));
+        //$grid->column('updated_at', trans('admin.Updated at'));
         //$grid->column('industry', trans('admin.industry'));
-
         //$grid->column('company_type', trans('admin.companyType'));
         //$grid->column('registered_capital', trans('admin.registeredCapital'));
         //$grid->column('actual_capital', trans('admin.actualCapital'));
@@ -146,49 +164,14 @@ class ProjectEnterpriseController extends Controller
         //$grid->column('used_name', trans('admin.usedName'));
         //$grid->column('score', trans('admin.score'));
         //$grid->column('other', trans('admin.other'));
-        $grid->column('word', trans('admin.word'));
-
-        $grid->column('creater.name', trans('admin.creater'));
-        $grid->column('note', trans('admin.note'))->display(function($note){
-            if(!empty($note) && mb_strlen($note) > 20){
-                return mb_substr($note, 0, 20) . '...';
-            }
-            return $note;
-        });
-        $grid->column('order.name', trans('admin.orderMember'));
-        $grid->column('contract_fund', trans('admin.contractFund'));
-
         //$grid->column('project.name', trans('admin.project'));
-        $statusArray = ['0' => '未跟踪',
-                    '1' => '跟踪进行时',
-                    '2' => '意向客户',
-                    '3' => '非意向客户',
-                    '4' => '已成交用户'];
-        $grid->column('status', trans('admin.status'))->display(function($status) use ($statusArray){
-            return $statusArray[$status];
-        });
-        $grid->column('created_at', trans('admin.Created at'));
-        $grid->column('updated_at', trans('admin.Updated at'));
-        /*$index = config('scout.elasticsearch.index');
-        if($grid->model()->searchableUsing()->exists($index))
-        {
-            // Delete index if exists
-            $grid->model()->searchableUsing()->deleteIndex($index);
-        }
 
-        // Create new index
-        $grid->model()->searchableUsing()->createIndex($index);
-
-        // Put custom mapping
-        $mappings = $grid->model()->mapping();
-        $grid->model()->searchableUsing()->putMapping($index, $grid->model()->getTable(), $mappings);*/
-        //dump($grid->model());
-        /*$mappings = $grid->model()->getOriginalModel()->mapping();
-        dd($mappings);*/
-        $grid->model()->getOriginalModel()::search('柳州')->get();
-        //$grid->model()->where('project_id', '=', $projectId);
-        dump($grid->model()->getOriginalModel()::search('柳州')->get());
-        dump($grid->model());
+        /*$elasticResult = $grid->model()->getOriginalModel()::search('湖南')->get();
+        dd($elasticResult);
+        $grid->column('id')->display(function () use ($elasticResult){
+            return $elasticResult->pluck('id');
+        });*/
+        $grid->model()->where('project_id', $projectId);
         return $grid;
     }
 

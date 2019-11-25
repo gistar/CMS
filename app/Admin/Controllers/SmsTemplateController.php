@@ -15,7 +15,7 @@ class SmsTemplateController extends AdminController
      *
      * @var string
      */
-    protected $title = 'App\SmsTemplate';
+    protected $title = '短信模板';
 
     /**
      * Make a grid builder.
@@ -27,7 +27,7 @@ class SmsTemplateController extends AdminController
         $grid = new Grid(new SmsTemplate);
 
         $grid->column('id', __('Id'));
-        $grid->column('projectId', __('ProjectId'));
+        //$grid->column('project.name', trans('admin.project_name'));
         $grid->column('title', __('Title'));
         $grid->column('content', __('Content'));
         $grid->column('created_at', __('Created at'));
@@ -47,7 +47,7 @@ class SmsTemplateController extends AdminController
         $show = new Show(SmsTemplate::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('projectId', __('ProjectId'));
+        //$show->field('project.name', trans('admin.project_name'));
         $show->field('title', __('Title'));
         $show->field('content', __('Content'));
         $show->field('created_at', __('Created at'));
@@ -65,7 +65,7 @@ class SmsTemplateController extends AdminController
     {
         $form = new Form(new SmsTemplate);
 
-        $form->number('projectId', __('ProjectId'));
+        //$form->select('projectId', trans('admin.project_name'))->options(SmsTemplate::all()->pluck('title','id'));
         $form->text('title', __('Title'));
         $form->text('content', __('Content'));
 

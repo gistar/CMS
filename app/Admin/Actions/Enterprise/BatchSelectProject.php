@@ -43,7 +43,7 @@ class BatchSelectProject extends BatchAction
             );
         }
         $existArray = ProjectEnterpriseModel::query()->whereIn('source_id', $checkBoxIds)->where('project_id',$project_id)->pluck('name');
-        if(empty($existArray)){
+        if($existArray->isEmpty()){
             if(!empty($importData))
             {
                 DB::table('admin_project_enterprise')->insert($importData);

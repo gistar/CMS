@@ -16,6 +16,10 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         'ad155f8f1cf0d418fe49e248db8c661b' => __DIR__ . '/..' . '/react/promise/src/functions_include.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
@@ -77,10 +81,14 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
         'aa53dcba601214d17ad405b7c291b7e8' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/operations/multiply.php',
         '75c79eb1b25749b05a47976f32b0d8a2' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/operations/divideby.php',
         '6ab8ad87a734f276a6bcd5a0fe1289be' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/operations/divideinto.php',
+        'd767e4fc2dc52fe66584ab8c6684783e' => __DIR__ . '/..' . '/adbario/php-dot-notation/src/helpers.php',
+        '65fec9ebcfbb3cbb4fd0d519687aea01' => __DIR__ . '/..' . '/danielstjules/stringy/src/Create.php',
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
+        'b067bc7112e384b61c701452d53a14a8' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/JmesPath.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'b6ec61354e97f32c0ae683041c78392a' => __DIR__ . '/..' . '/scrivo/highlight.php/HighlightUtilities/functions.php',
+        '66453932bc1be9fb2f910a27947d11b6' => __DIR__ . '/..' . '/alibabacloud/client/src/Functions.php',
         '4e8671d7be9056dcd04ddd9e8e15f9cc' => __DIR__ . '/..' . '/encore/laravel-admin/src/helpers.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         'f960e77410032f236cef8c56617b313e' => __DIR__ . '/..' . '/overtrue/laravel-lang/src/helpers.php',
@@ -90,6 +98,10 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
+        ),
+        'c' => 
+        array (
+            'clagiordano\\weblibs\\configmanager\\' => 34,
         ),
         'X' => 
         array (
@@ -133,6 +145,7 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Stringy\\' => 8,
             'ScoutEngines\\Elasticsearch\\' => 27,
         ),
         'R' => 
@@ -145,6 +158,7 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
             'Psy\\' => 4,
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Log\\' => 8,
+            'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
             'Prophecy\\' => 9,
             'PhpParser\\' => 10,
@@ -175,6 +189,7 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
         ),
         'J' => 
         array (
+            'JmesPath\\' => 9,
             'JakubOnderka\\PhpConsoleHighlighter\\' => 35,
             'JakubOnderka\\PhpConsoleColor\\' => 29,
         ),
@@ -188,6 +203,9 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
         array (
             'GuzzleHttp\\Stream\\' => 18,
             'GuzzleHttp\\Ring\\' => 16,
+            'GuzzleHttp\\Psr7\\' => 16,
+            'GuzzleHttp\\Promise\\' => 19,
+            'GuzzleHttp\\' => 11,
         ),
         'F' => 
         array (
@@ -226,6 +244,8 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
         'A' => 
         array (
             'App\\' => 4,
+            'AlibabaCloud\\Client\\' => 20,
+            'Adbar\\' => 6,
         ),
     );
 
@@ -235,6 +255,10 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'clagiordano\\weblibs\\configmanager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/clagiordano/weblibs-configmanager/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -348,6 +372,10 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'Stringy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/danielstjules/stringy/src',
+        ),
         'ScoutEngines\\Elasticsearch\\' => 
         array (
             0 => __DIR__ . '/..' . '/tamayo/laravel-scout-elastic/src',
@@ -371,6 +399,10 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Container\\' => 
         array (
@@ -432,6 +464,10 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
         array (
             0 => __DIR__ . '/..' . '/laravel/scout/src',
         ),
+        'JmesPath\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mtdowling/jmespath.php/src',
+        ),
         'JakubOnderka\\PhpConsoleHighlighter\\' => 
         array (
             0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
@@ -459,6 +495,18 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
         'GuzzleHttp\\Ring\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/ringphp/src',
+        ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
+        ),
+        'GuzzleHttp\\Promise\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
+        ),
+        'GuzzleHttp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
         'Fideloper\\Proxy\\' => 
         array (
@@ -552,6 +600,14 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'AlibabaCloud\\Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/alibabacloud/client/src',
+        ),
+        'Adbar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/adbario/php-dot-notation/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -587,6 +643,89 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
     );
 
     public static $classMap = array (
+        'Adbar\\Dot' => __DIR__ . '/..' . '/adbario/php-dot-notation/src/Dot.php',
+        'AlibabaCloud\\Client\\Accept' => __DIR__ . '/..' . '/alibabacloud/client/src/Accept.php',
+        'AlibabaCloud\\Client\\AlibabaCloud' => __DIR__ . '/..' . '/alibabacloud/client/src/AlibabaCloud.php',
+        'AlibabaCloud\\Client\\Clients\\AccessKeyClient' => __DIR__ . '/..' . '/alibabacloud/client/src/Clients/AccessKeyClient.php',
+        'AlibabaCloud\\Client\\Clients\\BearerTokenClient' => __DIR__ . '/..' . '/alibabacloud/client/src/Clients/BearerTokenClient.php',
+        'AlibabaCloud\\Client\\Clients\\Client' => __DIR__ . '/..' . '/alibabacloud/client/src/Clients/Client.php',
+        'AlibabaCloud\\Client\\Clients\\EcsRamRoleClient' => __DIR__ . '/..' . '/alibabacloud/client/src/Clients/EcsRamRoleClient.php',
+        'AlibabaCloud\\Client\\Clients\\ManageTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Clients/ManageTrait.php',
+        'AlibabaCloud\\Client\\Clients\\RamRoleArnClient' => __DIR__ . '/..' . '/alibabacloud/client/src/Clients/RamRoleArnClient.php',
+        'AlibabaCloud\\Client\\Clients\\RsaKeyPairClient' => __DIR__ . '/..' . '/alibabacloud/client/src/Clients/RsaKeyPairClient.php',
+        'AlibabaCloud\\Client\\Clients\\StsClient' => __DIR__ . '/..' . '/alibabacloud/client/src/Clients/StsClient.php',
+        'AlibabaCloud\\Client\\Config\\Config' => __DIR__ . '/..' . '/alibabacloud/client/src/Config/Config.php',
+        'AlibabaCloud\\Client\\Credentials\\AccessKeyCredential' => __DIR__ . '/..' . '/alibabacloud/client/src/Credentials/AccessKeyCredential.php',
+        'AlibabaCloud\\Client\\Credentials\\BearerTokenCredential' => __DIR__ . '/..' . '/alibabacloud/client/src/Credentials/BearerTokenCredential.php',
+        'AlibabaCloud\\Client\\Credentials\\CredentialsInterface' => __DIR__ . '/..' . '/alibabacloud/client/src/Credentials/CredentialsInterface.php',
+        'AlibabaCloud\\Client\\Credentials\\EcsRamRoleCredential' => __DIR__ . '/..' . '/alibabacloud/client/src/Credentials/EcsRamRoleCredential.php',
+        'AlibabaCloud\\Client\\Credentials\\Ini\\CreateTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Credentials/Ini/CreateTrait.php',
+        'AlibabaCloud\\Client\\Credentials\\Ini\\IniCredential' => __DIR__ . '/..' . '/alibabacloud/client/src/Credentials/Ini/IniCredential.php',
+        'AlibabaCloud\\Client\\Credentials\\Ini\\OptionsTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Credentials/Ini/OptionsTrait.php',
+        'AlibabaCloud\\Client\\Credentials\\Providers\\CredentialsProvider' => __DIR__ . '/..' . '/alibabacloud/client/src/Credentials/Providers/CredentialsProvider.php',
+        'AlibabaCloud\\Client\\Credentials\\Providers\\EcsRamRoleProvider' => __DIR__ . '/..' . '/alibabacloud/client/src/Credentials/Providers/EcsRamRoleProvider.php',
+        'AlibabaCloud\\Client\\Credentials\\Providers\\Provider' => __DIR__ . '/..' . '/alibabacloud/client/src/Credentials/Providers/Provider.php',
+        'AlibabaCloud\\Client\\Credentials\\Providers\\RamRoleArnProvider' => __DIR__ . '/..' . '/alibabacloud/client/src/Credentials/Providers/RamRoleArnProvider.php',
+        'AlibabaCloud\\Client\\Credentials\\Providers\\RsaKeyPairProvider' => __DIR__ . '/..' . '/alibabacloud/client/src/Credentials/Providers/RsaKeyPairProvider.php',
+        'AlibabaCloud\\Client\\Credentials\\RamRoleArnCredential' => __DIR__ . '/..' . '/alibabacloud/client/src/Credentials/RamRoleArnCredential.php',
+        'AlibabaCloud\\Client\\Credentials\\Requests\\AssumeRole' => __DIR__ . '/..' . '/alibabacloud/client/src/Credentials/Requests/AssumeRole.php',
+        'AlibabaCloud\\Client\\Credentials\\Requests\\GenerateSessionAccessKey' => __DIR__ . '/..' . '/alibabacloud/client/src/Credentials/Requests/GenerateSessionAccessKey.php',
+        'AlibabaCloud\\Client\\Credentials\\RsaKeyPairCredential' => __DIR__ . '/..' . '/alibabacloud/client/src/Credentials/RsaKeyPairCredential.php',
+        'AlibabaCloud\\Client\\Credentials\\StsCredential' => __DIR__ . '/..' . '/alibabacloud/client/src/Credentials/StsCredential.php',
+        'AlibabaCloud\\Client\\DefaultAcsClient' => __DIR__ . '/..' . '/alibabacloud/client/src/DefaultAcsClient.php',
+        'AlibabaCloud\\Client\\Encode' => __DIR__ . '/..' . '/alibabacloud/client/src/Encode.php',
+        'AlibabaCloud\\Client\\Exception\\AlibabaCloudException' => __DIR__ . '/..' . '/alibabacloud/client/src/Exception/AlibabaCloudException.php',
+        'AlibabaCloud\\Client\\Exception\\ClientException' => __DIR__ . '/..' . '/alibabacloud/client/src/Exception/ClientException.php',
+        'AlibabaCloud\\Client\\Exception\\ServerException' => __DIR__ . '/..' . '/alibabacloud/client/src/Exception/ServerException.php',
+        'AlibabaCloud\\Client\\Filter\\ApiFilter' => __DIR__ . '/..' . '/alibabacloud/client/src/Filter/ApiFilter.php',
+        'AlibabaCloud\\Client\\Filter\\ClientFilter' => __DIR__ . '/..' . '/alibabacloud/client/src/Filter/ClientFilter.php',
+        'AlibabaCloud\\Client\\Filter\\CredentialFilter' => __DIR__ . '/..' . '/alibabacloud/client/src/Filter/CredentialFilter.php',
+        'AlibabaCloud\\Client\\Filter\\Filter' => __DIR__ . '/..' . '/alibabacloud/client/src/Filter/Filter.php',
+        'AlibabaCloud\\Client\\Filter\\HttpFilter' => __DIR__ . '/..' . '/alibabacloud/client/src/Filter/HttpFilter.php',
+        'AlibabaCloud\\Client\\Log\\LogFormatter' => __DIR__ . '/..' . '/alibabacloud/client/src/Log/LogFormatter.php',
+        'AlibabaCloud\\Client\\Profile\\DefaultProfile' => __DIR__ . '/..' . '/alibabacloud/client/src/Profile/DefaultProfile.php',
+        'AlibabaCloud\\Client\\Regions\\EndpointProvider' => __DIR__ . '/..' . '/alibabacloud/client/src/Regions/EndpointProvider.php',
+        'AlibabaCloud\\Client\\Regions\\LocationService' => __DIR__ . '/..' . '/alibabacloud/client/src/Regions/LocationService.php',
+        'AlibabaCloud\\Client\\Regions\\LocationServiceRequest' => __DIR__ . '/..' . '/alibabacloud/client/src/Regions/LocationServiceRequest.php',
+        'AlibabaCloud\\Client\\Release' => __DIR__ . '/..' . '/alibabacloud/client/src/Release.php',
+        'AlibabaCloud\\Client\\Request\\Request' => __DIR__ . '/..' . '/alibabacloud/client/src/Request/Request.php',
+        'AlibabaCloud\\Client\\Request\\RoaRequest' => __DIR__ . '/..' . '/alibabacloud/client/src/Request/RoaRequest.php',
+        'AlibabaCloud\\Client\\Request\\RpcRequest' => __DIR__ . '/..' . '/alibabacloud/client/src/Request/RpcRequest.php',
+        'AlibabaCloud\\Client\\Request\\Traits\\AcsTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Request/Traits/AcsTrait.php',
+        'AlibabaCloud\\Client\\Request\\Traits\\ClientTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Request/Traits/ClientTrait.php',
+        'AlibabaCloud\\Client\\Request\\Traits\\DeprecatedRoaTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Request/Traits/DeprecatedRoaTrait.php',
+        'AlibabaCloud\\Client\\Request\\Traits\\DeprecatedTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Request/Traits/DeprecatedTrait.php',
+        'AlibabaCloud\\Client\\Request\\Traits\\RetryTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Request/Traits/RetryTrait.php',
+        'AlibabaCloud\\Client\\Request\\UserAgent' => __DIR__ . '/..' . '/alibabacloud/client/src/Request/UserAgent.php',
+        'AlibabaCloud\\Client\\Resolver\\ActionResolverTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Resolver/ActionResolverTrait.php',
+        'AlibabaCloud\\Client\\Resolver\\ApiResolver' => __DIR__ . '/..' . '/alibabacloud/client/src/Resolver/ApiResolver.php',
+        'AlibabaCloud\\Client\\Resolver\\CallTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Resolver/CallTrait.php',
+        'AlibabaCloud\\Client\\Resolver\\Roa' => __DIR__ . '/..' . '/alibabacloud/client/src/Resolver/Roa.php',
+        'AlibabaCloud\\Client\\Resolver\\Rpc' => __DIR__ . '/..' . '/alibabacloud/client/src/Resolver/Rpc.php',
+        'AlibabaCloud\\Client\\Resolver\\VersionResolver' => __DIR__ . '/..' . '/alibabacloud/client/src/Resolver/VersionResolver.php',
+        'AlibabaCloud\\Client\\Result\\Result' => __DIR__ . '/..' . '/alibabacloud/client/src/Result/Result.php',
+        'AlibabaCloud\\Client\\SDK' => __DIR__ . '/..' . '/alibabacloud/client/src/SDK.php',
+        'AlibabaCloud\\Client\\Signature\\BearerTokenSignature' => __DIR__ . '/..' . '/alibabacloud/client/src/Signature/BearerTokenSignature.php',
+        'AlibabaCloud\\Client\\Signature\\ShaHmac1Signature' => __DIR__ . '/..' . '/alibabacloud/client/src/Signature/ShaHmac1Signature.php',
+        'AlibabaCloud\\Client\\Signature\\ShaHmac256Signature' => __DIR__ . '/..' . '/alibabacloud/client/src/Signature/ShaHmac256Signature.php',
+        'AlibabaCloud\\Client\\Signature\\ShaHmac256WithRsaSignature' => __DIR__ . '/..' . '/alibabacloud/client/src/Signature/ShaHmac256WithRsaSignature.php',
+        'AlibabaCloud\\Client\\Signature\\Signature' => __DIR__ . '/..' . '/alibabacloud/client/src/Signature/Signature.php',
+        'AlibabaCloud\\Client\\Signature\\SignatureInterface' => __DIR__ . '/..' . '/alibabacloud/client/src/Signature/SignatureInterface.php',
+        'AlibabaCloud\\Client\\Support\\Arrays' => __DIR__ . '/..' . '/alibabacloud/client/src/Support/Arrays.php',
+        'AlibabaCloud\\Client\\Support\\Path' => __DIR__ . '/..' . '/alibabacloud/client/src/Support/Path.php',
+        'AlibabaCloud\\Client\\Support\\Sign' => __DIR__ . '/..' . '/alibabacloud/client/src/Support/Sign.php',
+        'AlibabaCloud\\Client\\Traits\\ArrayAccessTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Traits/ArrayAccessTrait.php',
+        'AlibabaCloud\\Client\\Traits\\ClientTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Traits/ClientTrait.php',
+        'AlibabaCloud\\Client\\Traits\\DefaultRegionTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Traits/DefaultRegionTrait.php',
+        'AlibabaCloud\\Client\\Traits\\EndpointTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Traits/EndpointTrait.php',
+        'AlibabaCloud\\Client\\Traits\\HasDataTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Traits/HasDataTrait.php',
+        'AlibabaCloud\\Client\\Traits\\HistoryTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Traits/HistoryTrait.php',
+        'AlibabaCloud\\Client\\Traits\\HttpTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Traits/HttpTrait.php',
+        'AlibabaCloud\\Client\\Traits\\LogTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Traits/LogTrait.php',
+        'AlibabaCloud\\Client\\Traits\\MockTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Traits/MockTrait.php',
+        'AlibabaCloud\\Client\\Traits\\ObjectAccessTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Traits/ObjectAccessTrait.php',
+        'AlibabaCloud\\Client\\Traits\\RegionTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Traits/RegionTrait.php',
+        'AlibabaCloud\\Client\\Traits\\RequestTrait' => __DIR__ . '/..' . '/alibabacloud/client/src/Traits/RequestTrait.php',
         'App\\Admin\\Actions\\Department\\Project' => __DIR__ . '/../..' . '/app/Admin/Actions/Department/Project.php',
         'App\\Admin\\Actions\\Enterprise\\BatchSelectProject' => __DIR__ . '/../..' . '/app/Admin/Actions/Enterprise/BatchSelectProject.php',
         'App\\Admin\\Actions\\Enterprise\\ImportPost' => __DIR__ . '/../..' . '/app/Admin/Actions/Enterprise/ImportPost.php',
@@ -2145,6 +2284,74 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
         'Faker\\ValidGenerator' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/ValidGenerator.php',
         'Fideloper\\Proxy\\TrustProxies' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustProxies.php',
         'Fideloper\\Proxy\\TrustedProxyServiceProvider' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustedProxyServiceProvider.php',
+        'GuzzleHttp\\Client' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Client.php',
+        'GuzzleHttp\\ClientInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/ClientInterface.php',
+        'GuzzleHttp\\Cookie\\CookieJar' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/CookieJar.php',
+        'GuzzleHttp\\Cookie\\CookieJarInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/CookieJarInterface.php',
+        'GuzzleHttp\\Cookie\\FileCookieJar' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/FileCookieJar.php',
+        'GuzzleHttp\\Cookie\\SessionCookieJar' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/SessionCookieJar.php',
+        'GuzzleHttp\\Cookie\\SetCookie' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/SetCookie.php',
+        'GuzzleHttp\\Exception\\BadResponseException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/BadResponseException.php',
+        'GuzzleHttp\\Exception\\ClientException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/ClientException.php',
+        'GuzzleHttp\\Exception\\ConnectException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/ConnectException.php',
+        'GuzzleHttp\\Exception\\GuzzleException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/GuzzleException.php',
+        'GuzzleHttp\\Exception\\InvalidArgumentException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/InvalidArgumentException.php',
+        'GuzzleHttp\\Exception\\RequestException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/RequestException.php',
+        'GuzzleHttp\\Exception\\SeekException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/SeekException.php',
+        'GuzzleHttp\\Exception\\ServerException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/ServerException.php',
+        'GuzzleHttp\\Exception\\TooManyRedirectsException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/TooManyRedirectsException.php',
+        'GuzzleHttp\\Exception\\TransferException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/TransferException.php',
+        'GuzzleHttp\\HandlerStack' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/HandlerStack.php',
+        'GuzzleHttp\\Handler\\CurlFactory' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Handler/CurlFactory.php',
+        'GuzzleHttp\\Handler\\CurlFactoryInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Handler/CurlFactoryInterface.php',
+        'GuzzleHttp\\Handler\\CurlHandler' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Handler/CurlHandler.php',
+        'GuzzleHttp\\Handler\\CurlMultiHandler' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Handler/CurlMultiHandler.php',
+        'GuzzleHttp\\Handler\\EasyHandle' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Handler/EasyHandle.php',
+        'GuzzleHttp\\Handler\\MockHandler' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Handler/MockHandler.php',
+        'GuzzleHttp\\Handler\\Proxy' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Handler/Proxy.php',
+        'GuzzleHttp\\Handler\\StreamHandler' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Handler/StreamHandler.php',
+        'GuzzleHttp\\MessageFormatter' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/MessageFormatter.php',
+        'GuzzleHttp\\Middleware' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Middleware.php',
+        'GuzzleHttp\\Pool' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Pool.php',
+        'GuzzleHttp\\PrepareBodyMiddleware' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/PrepareBodyMiddleware.php',
+        'GuzzleHttp\\Promise\\AggregateException' => __DIR__ . '/..' . '/guzzlehttp/promises/src/AggregateException.php',
+        'GuzzleHttp\\Promise\\CancellationException' => __DIR__ . '/..' . '/guzzlehttp/promises/src/CancellationException.php',
+        'GuzzleHttp\\Promise\\Coroutine' => __DIR__ . '/..' . '/guzzlehttp/promises/src/Coroutine.php',
+        'GuzzleHttp\\Promise\\EachPromise' => __DIR__ . '/..' . '/guzzlehttp/promises/src/EachPromise.php',
+        'GuzzleHttp\\Promise\\FulfilledPromise' => __DIR__ . '/..' . '/guzzlehttp/promises/src/FulfilledPromise.php',
+        'GuzzleHttp\\Promise\\Promise' => __DIR__ . '/..' . '/guzzlehttp/promises/src/Promise.php',
+        'GuzzleHttp\\Promise\\PromiseInterface' => __DIR__ . '/..' . '/guzzlehttp/promises/src/PromiseInterface.php',
+        'GuzzleHttp\\Promise\\PromisorInterface' => __DIR__ . '/..' . '/guzzlehttp/promises/src/PromisorInterface.php',
+        'GuzzleHttp\\Promise\\RejectedPromise' => __DIR__ . '/..' . '/guzzlehttp/promises/src/RejectedPromise.php',
+        'GuzzleHttp\\Promise\\RejectionException' => __DIR__ . '/..' . '/guzzlehttp/promises/src/RejectionException.php',
+        'GuzzleHttp\\Promise\\TaskQueue' => __DIR__ . '/..' . '/guzzlehttp/promises/src/TaskQueue.php',
+        'GuzzleHttp\\Promise\\TaskQueueInterface' => __DIR__ . '/..' . '/guzzlehttp/promises/src/TaskQueueInterface.php',
+        'GuzzleHttp\\Psr7\\AppendStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/AppendStream.php',
+        'GuzzleHttp\\Psr7\\BufferStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/BufferStream.php',
+        'GuzzleHttp\\Psr7\\CachingStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/CachingStream.php',
+        'GuzzleHttp\\Psr7\\DroppingStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/DroppingStream.php',
+        'GuzzleHttp\\Psr7\\FnStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/FnStream.php',
+        'GuzzleHttp\\Psr7\\InflateStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/InflateStream.php',
+        'GuzzleHttp\\Psr7\\LazyOpenStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/LazyOpenStream.php',
+        'GuzzleHttp\\Psr7\\LimitStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/LimitStream.php',
+        'GuzzleHttp\\Psr7\\MessageTrait' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/MessageTrait.php',
+        'GuzzleHttp\\Psr7\\MultipartStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/MultipartStream.php',
+        'GuzzleHttp\\Psr7\\NoSeekStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/NoSeekStream.php',
+        'GuzzleHttp\\Psr7\\PumpStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/PumpStream.php',
+        'GuzzleHttp\\Psr7\\Request' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/Request.php',
+        'GuzzleHttp\\Psr7\\Response' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/Response.php',
+        'GuzzleHttp\\Psr7\\Rfc7230' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/Rfc7230.php',
+        'GuzzleHttp\\Psr7\\ServerRequest' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/ServerRequest.php',
+        'GuzzleHttp\\Psr7\\Stream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/Stream.php',
+        'GuzzleHttp\\Psr7\\StreamDecoratorTrait' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/StreamDecoratorTrait.php',
+        'GuzzleHttp\\Psr7\\StreamWrapper' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/StreamWrapper.php',
+        'GuzzleHttp\\Psr7\\UploadedFile' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/UploadedFile.php',
+        'GuzzleHttp\\Psr7\\Uri' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/Uri.php',
+        'GuzzleHttp\\Psr7\\UriNormalizer' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/UriNormalizer.php',
+        'GuzzleHttp\\Psr7\\UriResolver' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/UriResolver.php',
+        'GuzzleHttp\\RedirectMiddleware' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/RedirectMiddleware.php',
+        'GuzzleHttp\\RequestOptions' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/RequestOptions.php',
+        'GuzzleHttp\\RetryMiddleware' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/RetryMiddleware.php',
         'GuzzleHttp\\Ring\\Client\\ClientUtils' => __DIR__ . '/..' . '/guzzlehttp/ringphp/src/Client/ClientUtils.php',
         'GuzzleHttp\\Ring\\Client\\CurlFactory' => __DIR__ . '/..' . '/guzzlehttp/ringphp/src/Client/CurlFactory.php',
         'GuzzleHttp\\Ring\\Client\\CurlHandler' => __DIR__ . '/..' . '/guzzlehttp/ringphp/src/Client/CurlHandler.php',
@@ -2185,6 +2392,8 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
         'GuzzleHttp\\Stream\\StreamDecoratorTrait' => __DIR__ . '/..' . '/guzzlehttp/streams/src/StreamDecoratorTrait.php',
         'GuzzleHttp\\Stream\\StreamInterface' => __DIR__ . '/..' . '/guzzlehttp/streams/src/StreamInterface.php',
         'GuzzleHttp\\Stream\\Utils' => __DIR__ . '/..' . '/guzzlehttp/streams/src/Utils.php',
+        'GuzzleHttp\\TransferStats' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/TransferStats.php',
+        'GuzzleHttp\\UriTemplate' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/UriTemplate.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
         'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',
@@ -3131,6 +3340,17 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/Highlighter.php',
+        'JmesPath\\AstRuntime' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/AstRuntime.php',
+        'JmesPath\\CompilerRuntime' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/CompilerRuntime.php',
+        'JmesPath\\DebugRuntime' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/DebugRuntime.php',
+        'JmesPath\\Env' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/Env.php',
+        'JmesPath\\FnDispatcher' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/FnDispatcher.php',
+        'JmesPath\\Lexer' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/Lexer.php',
+        'JmesPath\\Parser' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/Parser.php',
+        'JmesPath\\SyntaxErrorException' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/SyntaxErrorException.php',
+        'JmesPath\\TreeCompiler' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/TreeCompiler.php',
+        'JmesPath\\TreeInterpreter' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/TreeInterpreter.php',
+        'JmesPath\\Utils' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/Utils.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
         'Laravel\\Scout\\Builder' => __DIR__ . '/..' . '/laravel/scout/src/Builder.php',
         'Laravel\\Scout\\Console\\FlushCommand' => __DIR__ . '/..' . '/laravel/scout/src/Console/FlushCommand.php',
@@ -4609,6 +4829,13 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
         'Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerExceptionInterface.php',
         'Psr\\Container\\ContainerInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerInterface.php',
         'Psr\\Container\\NotFoundExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/NotFoundExceptionInterface.php',
+        'Psr\\Http\\Message\\MessageInterface' => __DIR__ . '/..' . '/psr/http-message/src/MessageInterface.php',
+        'Psr\\Http\\Message\\RequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/RequestInterface.php',
+        'Psr\\Http\\Message\\ResponseInterface' => __DIR__ . '/..' . '/psr/http-message/src/ResponseInterface.php',
+        'Psr\\Http\\Message\\ServerRequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/ServerRequestInterface.php',
+        'Psr\\Http\\Message\\StreamInterface' => __DIR__ . '/..' . '/psr/http-message/src/StreamInterface.php',
+        'Psr\\Http\\Message\\UploadedFileInterface' => __DIR__ . '/..' . '/psr/http-message/src/UploadedFileInterface.php',
+        'Psr\\Http\\Message\\UriInterface' => __DIR__ . '/..' . '/psr/http-message/src/UriInterface.php',
         'Psr\\Log\\AbstractLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/AbstractLogger.php',
         'Psr\\Log\\InvalidArgumentException' => __DIR__ . '/..' . '/psr/log/Psr/Log/InvalidArgumentException.php',
         'Psr\\Log\\LogLevel' => __DIR__ . '/..' . '/psr/log/Psr/Log/LogLevel.php',
@@ -4933,6 +5160,8 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Stringy\\StaticStringy' => __DIR__ . '/..' . '/danielstjules/stringy/src/StaticStringy.php',
+        'Stringy\\Stringy' => __DIR__ . '/..' . '/danielstjules/stringy/src/Stringy.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\CommandLoader\\CommandLoaderInterface' => __DIR__ . '/..' . '/symfony/console/CommandLoader/CommandLoaderInterface.php',
         'Symfony\\Component\\Console\\CommandLoader\\ContainerCommandLoader' => __DIR__ . '/..' . '/symfony/console/CommandLoader/ContainerCommandLoader.php',
@@ -5676,6 +5905,7 @@ class ComposerStaticInit6f267b15c79fb482154e070a48eba92e
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+        'clagiordano\\weblibs\\configmanager\\ConfigManager' => __DIR__ . '/..' . '/clagiordano/weblibs-configmanager/src/ConfigManager.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
         'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',
