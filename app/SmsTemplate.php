@@ -12,4 +12,9 @@ class SmsTemplate extends Model
     {
         return $this->belongsTo('App\Project', 'projectId', 'project_id');
     }
+
+    public function signs()
+    {
+        return $this->belongsTo('App\Smssign', 'sign', 'id');
+    }
 }

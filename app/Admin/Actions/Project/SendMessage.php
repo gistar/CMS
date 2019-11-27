@@ -2,14 +2,12 @@
 
 namespace App\Admin\Actions\Project;
 
-use App\Project;
+use App\Smssign;
 use App\SmsTemplate;
 use Encore\Admin\Actions\BatchAction;
 use Encore\Admin\Facades\Admin;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Session;
 
 class SendMessage extends BatchAction
 {
@@ -18,11 +16,19 @@ class SendMessage extends BatchAction
     public function handle(Collection $collection, Request $request)
     {
         $sendId = Admin::user()->id;
+
+        $templateid = $request->get('template_id');
+        $templateInstant = SmsTemplate::find($templateid);
+        $signid = $request->get('sign_id');
+        $signInstant = Smssign::find($signid);
         foreach ($collection as $model) {
             preg_match('/.*([\d]{11}).*/', $model->phone, $telephone);
-
             if(isset($telephone[1])){
-                dispatch(new \App\Jobs\SendMessage($telephone[1],$request->get('templateId'), $sendId))->onQueue('Message');
+                dispatch(new \App\Jobs\SendMessage($telephone[1],
+                    $templateInstant,
+                    $signInstant,
+                    $sendId))
+                    ->onQueue('Message');
             }
             continue;
         }
@@ -39,6 +45,8 @@ class SendMessage extends BatchAction
         $project = Project::find(Session::get('projectId'));
         $templates = $project->smsTemplate()->pluck('title','id');*/
         $templates = SmsTemplate::all()->pluck('title', 'id');
-        $this->select('templateId','短信模板')->options($templates);
+        $this->select('template_id','短信模板')->options($templates);
+        $sign = Smssign::all()->pluck('name', 'id');
+        $this->select('sign_id', '签名')->options($sign);
     }
 }

@@ -78,6 +78,7 @@ return array(
     'Enqueue\\Dsn\\' => array($vendorDir . '/enqueue/dsn'),
     'Enqueue\\AmqpTools\\' => array($vendorDir . '/enqueue/amqp-tools'),
     'Enqueue\\AmqpLib\\' => array($vendorDir . '/enqueue/amqp-lib'),
+    'Encore\\Chartjs\\' => array($vendorDir . '/laravel-admin-ext/chartjs/src'),
     'Encore\\Admin\\' => array($vendorDir . '/encore/laravel-admin/src'),
     'Elasticsearch\\' => array($vendorDir . '/elasticsearch/elasticsearch/src/Elasticsearch'),
     'Egulias\\EmailValidator\\' => array($vendorDir . '/egulias/email-validator/EmailValidator'),

@@ -15,7 +15,7 @@ class SmsLogsController extends AdminController
      *
      * @var string
      */
-    protected $title = 'App\SmsLog';
+    protected $title = '短信日志';
 
     /**
      * Make a grid builder.
@@ -28,11 +28,11 @@ class SmsLogsController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('phone', __('Phone'));
-        $grid->column('templateId', __('TemplateId'));
+        $grid->column('template.title', __('TemplateId'));
         $grid->column('content', __('Content'));
         $grid->column('status', __('Status'));
         $grid->column('message', __('Message'));
-        $grid->column('sender', __('Sender'));
+        $grid->column('send.name', __('Sender'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 

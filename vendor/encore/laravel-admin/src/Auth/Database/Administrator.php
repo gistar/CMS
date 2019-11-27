@@ -129,4 +129,9 @@ class Administrator extends Model implements AuthenticatableContract
     {
         return $this->hasMany('App\ProjectEnterpriseModel', 'lastediter_id', 'id');
     }
+
+    public function smsSender()
+    {
+        return $this->hasMany('App\SmsLog', 'sender', 'id');
+    }
 }

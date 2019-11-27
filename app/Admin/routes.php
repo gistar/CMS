@@ -33,4 +33,8 @@ Route::group([
 
     $router->resource('smslogs', SmsLogsController::class);
     $router->resource('emaillogs', EmailLogController::class);
+
+    $router->resource('smssigns', SmsSignController::class);
+
+    Route::get('departreport', 'ReportController@index')->name('depart.index');
 });

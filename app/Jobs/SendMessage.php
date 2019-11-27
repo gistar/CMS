@@ -21,7 +21,15 @@ class SendMessage implements ShouldQueue
 
     private $telephone;
 
+    private $template;
+
     private $templateid;
+
+    private $tempcode;
+
+    private $sign;
+
+    private $signid;
 
     private $sendid;
     /**
@@ -29,10 +37,14 @@ class SendMessage implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($telephone, $templateId, $sendId)
+    public function __construct($telephone, $templateInstant, $signInstant, $sendId)
     {
         $this->telephone = $telephone;
-        $this->templateid = $templateId;
+        $this->template = $templateInstant->content;
+        $this->templateid = $templateInstant->id;
+        $this->tempcode = $templateInstant->code;
+        $this->sign = $signInstant->name;
+        $this->signid = $signInstant->id;
         $this->sendid = $sendId;
     }
 
@@ -47,7 +59,6 @@ class SendMessage implements ShouldQueue
      */
     public function handle()
     {
-        $content = SmsTemplate::find($this->templateid)->content;
         AlibabaCloud::accessKeyClient( env('SMS_ACCESS_KEYID', ''), env('SMS_ACCESS_KeySECRET', ''))
             ->regionId('cn-hangzhou')
             ->asDefaultClient();
@@ -61,13 +72,9 @@ class SendMessage implements ShouldQueue
                 ->options([
                     'query' => [
                         'RegionId' => "cn-hangzhou",
-                        'PhoneNumbers' => "13021922850",
-                        'SignName' => "中国国际电梯展览会",
-                        'TemplateCode' => "SMS_113090028",
-                        //'TemplateParam' => "{\"code\":\"462914\"}",
-                        'TemplateParam' => "{462914}",
-                        'SmsUpExtendCode' => "00000",
-                        'OutId' => "11111",
+                        'PhoneNumbers' => $this->telephone,
+                        'SignName' => $this->sign,
+                        'TemplateCode' => $this->tempcode
                     ],
                 ])
                 ->request();
@@ -81,7 +88,7 @@ class SendMessage implements ShouldQueue
         $id = DB::table('smslogs')->insertGetId(
             ['phone'=> $this->telephone,
             'templateid' => $this->templateid,
-            'content'=> $content,
+            'content'=> $this->template,
             'status' => $messageStatus,
             'message' => $result,
             'sender' => $this->sendid]);

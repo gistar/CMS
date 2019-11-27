@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Actions\Project\EnterpriseSendMessage;
 use App\Admin\Actions\Project\SelectEnterprise;
 use App\Admin\Actions\Project\SendMessage;
 use App\Http\Controllers\Controller;
@@ -60,6 +61,10 @@ class ProjectEnterpriseController extends Controller
         /*$grid->tools(function (Grid\Tools $tools){
             $tools->append(new SelectEnterprise());
         });*/
+        $grid->actions(function ($actions){
+            $actions->disableDelete();
+            $actions->add(new EnterpriseSendMessage());
+        });
         $grid->expandFilter();
 
         $grid->filter(function ($filter) use ($projectId){
