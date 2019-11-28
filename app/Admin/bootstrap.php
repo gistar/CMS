@@ -21,4 +21,4 @@ use Encore\Admin\Facades\Admin;
 
 Encore\Admin\Form::forget(['map', 'editor']);
 
-Admin::js('/vendor/chartjs/dist/echart.js');
+Admin::js('vendor/laravel-admin-ext/chartjs/Chart.bundle.min.js');
