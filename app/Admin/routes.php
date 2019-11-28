@@ -37,4 +37,7 @@ Route::group([
     $router->resource('smssigns', SmsSignController::class);
 
     Route::get('departreport', 'ReportController@index')->name('depart.index');
+    Route::get('departreport/lastweek', 'ReportController@lastweek')->name('depart.lastweek');
+    Route::get('departreport/currmonth', 'ReportController@currmonth')->name('depart.currmonth');
+    Route::get('departreport/lastmonth', 'ReportController@lastmonth')->name('depart.lastmonth');
 });

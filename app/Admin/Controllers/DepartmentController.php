@@ -34,9 +34,7 @@ class DepartmentController extends Controller
 
     protected function grid()
     {
-
         $grid = new Grid(new Department());
-        //$test = new Department();
         $grid->column('department_id', 'ID')->sortable();
         $grid->column('department_name', trans('admin.department_name'));
         $grid->column('department_dec', trans('admin.department_description'));
