@@ -41,7 +41,7 @@ class DepartmentController extends Controller
         $grid->column('leader.name', trans('admin.leader'))->label();
         $grid->column('project',trans('admin.project'))->pluck('name')->label();
         $grid->column('members', trans('admin.members'))->pluck('name')->label();
-        if(!Admin::user()->isRole('administrator') || Admin::user()->cannot('department.admin.view'))
+        if(Admin::user()->cannot('department.admin.view'))
         {
             $users = Administrator::with('department')->where('id',Admin::user()->id)->get();
             foreach ($users as $user)

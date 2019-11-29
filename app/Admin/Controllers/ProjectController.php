@@ -42,13 +42,22 @@ class ProjectController extends AdminController
         $grid->column('updated_at', __('Updated at'));
 
         $this->attributes['title'] = 'test';
-        $departments = Administrator::find(Admin::user()->id)->department()->get();
+
+        if(Admin::user()->cannot('administrator.project')){
+            $projects = Administrator::find(Admin::user()->id)->project()->get();
+            foreach ($projects as $project){
+                $projectIds[] = $project->project_id;
+            }
+            $grid->model()->whereIn('project_id', $projectIds);
+        }
+
+        /*$departments = Administrator::find(Admin::user()->id)->department()->get();
         $departmentIds = array();
         foreach ($departments as $department)
         {
             $departmentIds[] = $department->department_id;
         }
-        $grid->model()->whereIn('department_id', $departmentIds);
+        $grid->model()->whereIn('department_id', $departmentIds);*/
         $grid->actions(function ($actions) {
             $actions->add(new Enterprise());
         });
