@@ -118,7 +118,7 @@ class EnterpriseController extends Controller
 
         $form->text('representative', '企业法人')->rules('required|min:3');
 
-        $form->select('region', '省')->options(ProvinceModel::all()->pluck('name','name'))->load('city','/api/city');
+        $form->select('region', '省')->options(ProvinceModel::all()->pluck('name','name'))->load('city','/api/city')->required();
 
         $form->select('city', '市')->options(function($city){
             if($city){
@@ -126,14 +126,14 @@ class EnterpriseController extends Controller
                 //dd(CityModel::where('province_id' , CityModel::where('city_id', $cityid)->first()->province_id)->pluck('name', 'name'));
                 return CityModel::where('province_id' , CityModel::where('city_id', $cityid)->first()->province_id)->pluck('name', 'name');
             }
-        })->load('district', '/api/country');
+        })->load('district', '/api/country')->required();
 
         $form->select('district', '区县')->options(function($country){
             if($country){
                 $countryid = CountryModel::where('name', $country)->first()->country_id;
                 return CountryModel::where('city_id', CountryModel::where('country_id', $countryid)->first()->city_id)->pluck('name', 'name');
             }
-        });
+        })->required();
 //        $form->select('city', '市')->options(function($id){
 //            if($id){
 //                return CityModel::where('province_id' , CityModel::where('city_id', $id)->first()->province_id)->pluck('name', 'city_id');
@@ -156,17 +156,17 @@ class EnterpriseController extends Controller
 //            return CountryModel::where('country_id', $id)->pluck('name', 'country_id');
 //        });
 
-        $form->select('biz_status', '公司状态')->options(['存续' =>'存续','在业' => '在业','吊销，未注销' => '吊销，未注销','注销' => '注销','迁出' => '迁出']);
+        $form->select('biz_status', '公司状态')->options(['存续' =>'存续','在业' => '在业','吊销，未注销' => '吊销，未注销','注销' => '注销','迁出' => '迁出'])->required();
 
-        $form->text('phone', '联系电话');
+        $form->text('phone', '联系电话')->required();
 
-        $form->text('email', 'Email');
+        $form->text('email', 'Email')->required();
 
-        $form->date('setup_time', '成立日期');
+        $form->date('setup_time', '成立日期')->required();
 
-        $form->text('registered_capital', '注册资本');
+        $form->text('registered_capital', '注册资本')->default('-');
 
-        $form->text('word', '词源');
+        $form->text('word', '词源')->default('-');
 
         return $form;
     }

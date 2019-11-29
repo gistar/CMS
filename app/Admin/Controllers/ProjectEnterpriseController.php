@@ -177,6 +177,7 @@ class ProjectEnterpriseController extends Controller
             return $elasticResult->pluck('id');
         });*/
         $grid->model()->where('project_id', $projectId);
+        $grid->model()->orderBy('id', 'desc');
         return $grid;
     }
 

@@ -62,6 +62,7 @@ class DepartmentProjectController extends Controller
         $grid->actions(function ($actions) {
             $actions->add(new Enterprise());
         });
+        $grid->model()->orderBy('project_id', 'desc');
         return $grid;
     }
 

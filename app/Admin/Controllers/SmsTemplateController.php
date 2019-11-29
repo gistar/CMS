@@ -25,8 +25,8 @@ class SmsTemplateController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new SmsTemplate);
-
-        $grid->column('id', __('Id'));
+        $grid->id('id')->sortable();
+        //$grid->column('id', __('Id'));
         //$grid->column('project.name', trans('admin.project_name'));
         $grid->column('title', __('Title'));
         $grid->column('code', __('Code'));
@@ -42,7 +42,7 @@ class SmsTemplateController extends AdminController
         });
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
-
+        $grid->model()->orderBy('id', 'desc');
         return $grid;
     }
 
@@ -77,8 +77,8 @@ class SmsTemplateController extends AdminController
         $form = new Form(new SmsTemplate);
 
         //$form->select('projectId', trans('admin.project_name'))->options(SmsTemplate::all()->pluck('title','id'));
-        $form->text('title', __('Title'));
-        $form->text('content', __('Content'));
+        $form->text('title', __('Title'))->required();
+        $form->text('content', __('Content'))->required();
         $form->text('code', __('Code'))->required();
         $form->select('status', __('Status'))->options([
             'unauth' => '未通过',
