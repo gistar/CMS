@@ -79,7 +79,7 @@ class SmsTemplateController extends AdminController
         //$form->select('projectId', trans('admin.project_name'))->options(SmsTemplate::all()->pluck('title','id'));
         $form->text('title', __('Title'));
         $form->text('content', __('Content'));
-        $form->text('code', __('Code'));
+        $form->text('code', __('Code'))->required();
         $form->select('status', __('Status'))->options([
             'unauth' => '未通过',
             'authed' => '通过'

@@ -242,32 +242,32 @@ class ProjectEnterpriseController extends Controller
     {
         $form = new Form(new ProjectEnterpriseModel);
         $form->column(1/2, function ($form){
-            $form->text('name', trans('admin.companyName'));
-            $form->text('representative', trans('admin.representative'));
-            $form->text('address', trans('admin.address'));
+            $form->text('name', trans('admin.companyName'))->required();
+            $form->text('representative', trans('admin.representative'))->required();
+            $form->text('address', trans('admin.address'))->required();
 
-            $form->select('region', '省')->options(ProvinceModel::all()->pluck('name','name'))->load('city','/api/city');
+            $form->select('region', '省')->options(ProvinceModel::all()->pluck('name','name'))->load('city','/api/city')->required();
 
             $form->select('city', '市')->options(function($city){
                 if($city){
                     $cityid = CityModel::where('name', $city)->first()->city_id;
                     return CityModel::where('province_id' , CityModel::where('city_id', $cityid)->first()->province_id)->pluck('name', 'name');
                 }
-            })->load('district', '/api/country');
+            })->load('district', '/api/country')->required();
 
             $form->select('district', '区县')->options(function($country){
                 if($country){
                     $countryid = CountryModel::where('name', $country)->first()->country_id;
                     return CountryModel::where('city_id', CountryModel::where('country_id', $countryid)->first()->city_id)->pluck('name', 'name');
                 }
-            });
+            })->required();
             $form->select('biz_status', trans('admin.bizStatus'))->options([
                 '在业' => '在业',
                 '存续' => '存续',
                 '吊销，未注销' => '吊销，未注销',
                 '注销' => '注销',
                 '迁出' => '迁出',
-                '其他' =>'其他']);
+                '其他' =>'其他'])->required();
             $form->text('credit_code', trans('admin.creditCode'));
             $form->text('register_code', trans('admin.registerCode'));
         });
@@ -275,14 +275,14 @@ class ProjectEnterpriseController extends Controller
         $form->column(1/2,function ($form) use ($projectId){
             //$form->text('lat_long', trans('admin.latLong'));
 
-            $form->mobile('phone', trans('admin.phone'));
-            $form->email('email', trans('admin.email'));
-            $form->date('setup_time', trans('admin.setupTime'));
+            $form->mobile('phone', trans('admin.phone'))->required();
+            $form->email('email', trans('admin.email'))->required();
+            $form->date('setup_time', trans('admin.setupTime'))->required();
             $form->select('status', '状态')->options(['0' => '未跟踪',
                 '1' => '跟踪进行时',
                 '2' => '意向客户',
                 '3' => '非意向客户',
-                '4' => '已成交用户']);
+                '4' => '已成交用户'])->required();
             $form->decimal('contract_fund','合同金额');
             $form->text('word', trans('admin.word'));
             $form->hidden('project_id')->value($projectId);
