@@ -83,6 +83,7 @@ class SendMessage implements ShouldQueue
             echo $e->getErrorMessage() . PHP_EOL;
             $messageStatus = 'senderr';
         } catch (ServerException $e) {
+            echo $e->getErrorMessage() . PHP_EOL;
             $messageStatus = 'senderr';
         }
         $id = DB::table('smslogs')->insertGetId(
