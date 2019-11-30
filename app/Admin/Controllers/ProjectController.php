@@ -45,6 +45,7 @@ class ProjectController extends AdminController
 
         if(Admin::user()->cannot('administrator.project')){
             $projects = Administrator::find(Admin::user()->id)->project()->get();
+            $projectIds = array();
             foreach ($projects as $project){
                 $projectIds[] = $project->project_id;
             }
