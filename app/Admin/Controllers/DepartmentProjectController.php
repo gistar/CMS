@@ -61,7 +61,6 @@ class DepartmentProjectController extends Controller
 
         $grid->model()->where('department_id', '=', $departmentId);
 
-
         //没有管理项目的权限
         if(Admin::user()->cannot('administrator.projects')){
             $project = Administrator::find(Admin::user()->id)->project()->get();

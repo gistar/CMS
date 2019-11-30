@@ -120,20 +120,23 @@ class ProjectEnterpriseController extends Controller
         $grid->column('name', trans('admin.companyName'));
         $grid->column('representative', trans('admin.representative'));
         //$grid->column('address', trans('admin.address'));
-        $grid->column('region', trans('admin.region'));
-        $grid->column('city', trans('admin.city'));
-        $grid->column('district', trans('admin.district'));
+        //$grid->column('region', trans('admin.region'));
+        //$grid->column('city', trans('admin.city'));
+        //$grid->column('district', trans('admin.district'));
         $grid->column('biz_status', trans('admin.bizStatus'));
         //$grid->column('credit_code', trans('admin.creditCode'));
         //$grid->column('register_code', trans('admin.registerCode'));
 
         $grid->column('phone', trans('admin.phone'))->display(function ($phone){
-            return filled($phone) ? mb_substr($phone, 0, 20) . '...' : '';
+            $phoneStr = "<a title='$phone' style='cursor:pointer'>" . mb_substr($phone, 0, 20) . "...</a>";
+            return filled($phone) ? $phoneStr : '';
         });
 
         $grid->column('email', trans('admin.email'))->display(function ($email){
-            return filled($email) ? mb_substr($email, 0, 20) . '...' : '';
+            $emailStr = "<a title='$email' style='cursor:pointer'>" . mb_substr($email, 0, 20) . "...</a>";
+            return filled($email) ? $emailStr : '';
         });
+
         //$grid->column('setup_time', trans('admin.setupTime'));
         //$grid->column('word', trans('admin.word'));
         //$grid->column('creater.name', trans('admin.creater'));
@@ -156,7 +159,7 @@ class ProjectEnterpriseController extends Controller
             return $statusArray[$status];
         });
         //$grid->column('created_at', trans('admin.Created at'));
-        //$grid->column('updated_at', trans('admin.Updated at'));
+        $grid->column('updated_at', trans('admin.updatedAt'));
         //$grid->column('industry', trans('admin.industry'));
         //$grid->column('company_type', trans('admin.companyType'));
         //$grid->column('registered_capital', trans('admin.registeredCapital'));
