@@ -6,6 +6,7 @@ use App\Admin\Actions\Project\Enterprise;
 use App\Project;
 use App\Department;
 
+use Encore\Admin\Auth\Database\Administrator;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
@@ -59,9 +60,24 @@ class DepartmentProjectController extends Controller
         $grid->column('updated_at', __('Updated at'));
 
         $grid->model()->where('department_id', '=', $departmentId);
-        $grid->actions(function ($actions) {
-            $actions->add(new Enterprise());
-        });
+
+
+        //没有管理项目的权限
+        if(Admin::user()->cannot('administrator.project')){
+            $userProjectIds = array();
+            $project = Administrator::find(Admin::user()->id)->project()->get();
+            $userProjectIds = $project->pluck('project_id')->all();
+            $grid->actions(function ($actions) use ($userProjectIds){
+                if(in_array($actions->getKey(), $userProjectIds)){
+                    $actions->add(new Enterprise());
+                }
+            });
+        }else{
+            $grid->actions(function ($actions) {
+                $actions->add(new Enterprise());
+            });
+        }
+
         $grid->model()->orderBy('project_id', 'desc');
         return $grid;
     }
