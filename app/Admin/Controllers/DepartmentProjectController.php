@@ -63,8 +63,7 @@ class DepartmentProjectController extends Controller
 
 
         //没有管理项目的权限
-        if(Admin::user()->cannot('administrator.project')){
-            $userProjectIds = array();
+        if(Admin::user()->cannot('administrator.projects')){
             $project = Administrator::find(Admin::user()->id)->project()->get();
             $userProjectIds = $project->pluck('project_id')->all();
             $grid->actions(function ($actions) use ($userProjectIds){

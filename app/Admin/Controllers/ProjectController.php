@@ -43,7 +43,7 @@ class ProjectController extends AdminController
 
         $this->attributes['title'] = 'test';
 
-        if(Admin::user()->cannot('administrator.project')){
+        if(Admin::user()->cannot('administrator.projects')){
             $projects = Administrator::find(Admin::user()->id)->project()->get();
             $projectIds = array();
             foreach ($projects as $project){
