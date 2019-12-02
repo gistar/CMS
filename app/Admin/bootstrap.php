@@ -18,7 +18,11 @@
  *
  */
 use Encore\Admin\Facades\Admin;
+use Encore\Admin\Grid\Column;
+use App\Admin\Extensions\Popover;
 
 Encore\Admin\Form::forget(['map', 'editor']);
 
 Admin::js('vendor/laravel-admin-ext/chartjs/Chart.bundle.min.js');
+
+Column::extend('popover', Popover::class);

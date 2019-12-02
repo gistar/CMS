@@ -19,6 +19,7 @@ use App\Admin\Actions\Project\ExportTemplate;
 use App\Admin\Actions\Project\ImportEnterprise;
 
 use App\Project;
+use Encore\Admin\Widgets\Table;
 
 class ProjectEnterpriseController extends Controller
 {
@@ -123,7 +124,7 @@ class ProjectEnterpriseController extends Controller
         //$grid->column('region', trans('admin.region'));
         //$grid->column('city', trans('admin.city'));
         //$grid->column('district', trans('admin.district'));
-        $grid->column('biz_status', trans('admin.bizStatus'));
+        //$grid->column('biz_status', trans('admin.bizStatus'));
         //$grid->column('credit_code', trans('admin.creditCode'));
         //$grid->column('register_code', trans('admin.registerCode'));
 
@@ -140,14 +141,14 @@ class ProjectEnterpriseController extends Controller
         //$grid->column('setup_time', trans('admin.setupTime'));
         //$grid->column('word', trans('admin.word'));
         //$grid->column('creater.name', trans('admin.creater'));
-        $grid->column('note', trans('admin.note'))->display(function($note){
+        /*$grid->column('note', trans('admin.note'))->display(function($note){
             if(!filled($note) && mb_strlen($note) > 20){
                 return mb_substr($note, 0, 20) . '...';
             }
             return filled($note) && $note != '""' ? $note : '';
-        });
+        });*/
         $grid->column('order.name', trans('admin.orderMember'));
-        $grid->column('contract_fund', trans('admin.contractFund'));
+        //$grid->column('contract_fund', trans('admin.contractFund'));
 
 
         $statusArray = ['0' => '未跟踪',
@@ -160,6 +161,12 @@ class ProjectEnterpriseController extends Controller
         });
         //$grid->column('created_at', trans('admin.Created at'));
         $grid->column('updated_at', trans('admin.updatedAt'));
+        $grid->column('lasterEditer.name', trans('admin.tracker'));
+
+        //$grid->column('track', __('跟踪详情'))->popover('right');
+        /*$grid->column('phone', __('跟踪详情'))->modal(function ($model){
+            return new Table(['table'],['table']);
+        });*/
         //$grid->column('industry', trans('admin.industry'));
         //$grid->column('company_type', trans('admin.companyType'));
         //$grid->column('registered_capital', trans('admin.registeredCapital'));
@@ -180,7 +187,7 @@ class ProjectEnterpriseController extends Controller
             return $elasticResult->pluck('id');
         });*/
         $grid->model()->where('project_id', $projectId);
-        $grid->model()->orderBy('id', 'desc');
+        $grid->model()->orderBy('updated_at', 'desc');
         return $grid;
     }
 

@@ -111,7 +111,7 @@ class ProjectController extends AdminController
 
         //$form->multipleSelect('members', '部门组员')->options();
 
-        $form->text('note', '项目备注');
+        $form->text('note', '项目备注')->default('-')->required();
         $form->hidden('create_user_id', Admin::user()->id);
         $form->saving(function (Form $form){
             $form->create_user_id = Admin::user()->id;

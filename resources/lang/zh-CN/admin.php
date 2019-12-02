@@ -145,5 +145,5 @@ return [
     'projectEnterprise'     =>  '项目企业',
     'contractFund'          =>  '合同金额',
     'status'                =>  '状态',
-    'updatedAt'            =>  '更新时间',
+    'updatedAt'             =>  '最后更新',
 ];
